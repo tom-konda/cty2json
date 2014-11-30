@@ -1,3 +1,10 @@
+/*!
+* Cty2JSON ver 0.1
+* Copyright (C) 2014 Tom Konda
+* Released under the GPLv3 license
+* See https://www.gnu.org/licenses/gpl-3.0.en.html
+*/
+
 // Get Message From Worker
 self.addEventListener(
     'message',

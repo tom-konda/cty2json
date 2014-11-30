@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Cty2JSON : Micropolisのctyファイルをブラウザ上でJSONに変換して扱えるライブラリを作成しました">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Cty2JSON</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/tom-konda/cty2json">View on GitHub</a>
+
+          <h1 id="project_title">Cty2JSON</h1>
+          <h2 id="project_tagline">Micropolisのctyファイルをブラウザ上でJSONに変換して扱えるライブラリを作成しました</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/tom-konda/cty2json/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/tom-konda/cty2json/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>Cty2JSON: <a href="https://github.com/tom-konda/cty2json">https://github.com/tom-konda/cty2json</a></p>
+
+<h2>
+<a id="これは何" class="anchor" href="#%E3%81%93%E3%82%8C%E3%81%AF%E4%BD%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>これは何？</h2>
+
+<p>Micropolisのcty形式のファイルをJavaScriptを使用し、JSONに変換します。</p>
+
+<h2>
+<a id="対応ブラウザ" class="anchor" href="#%E5%AF%BE%E5%BF%9C%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>対応ブラウザ</h2>
+
+<ul>
+<li>Firefox、Chromiumで動作確認</li>
+<li>IE 10.0+、Google Chrome、Opera、Safari はおそらく動作するはず</li>
+</ul>
+
+<h2>
+<a id="使い方" class="anchor" href="#%E4%BD%BF%E3%81%84%E6%96%B9" aria-hidden="true"><span class="octicon octicon-link"></span></a>使い方</h2>
+
+<p>WebWorkerで外部から呼び出されることを想定して作成しています。
+呼び出し方は以下のようになります。</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-c">//Worker生成</span>
+<span class="pl-s">var</span> worker <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Worker</span>(<span class="pl-s1"><span class="pl-pds">'</span>//path.to/cty2json.js<span class="pl-pds">'</span></span>);
+
+worker.addEventListener(
+    <span class="pl-s1"><span class="pl-pds">'</span>message<span class="pl-pds">'</span></span>, 
+    <span class="pl-st">function</span>(<span class="pl-vpf">e</span>) {
+        <span class="pl-c">// 変換されたJSONの処理</span>
+    },
+    <span class="pl-c1">false</span>
+);
+worker.addEventListener(
+    <span class="pl-s1"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>, 
+    <span class="pl-st">function</span>() {
+        <span class="pl-c">// エラー処理</span>
+    },
+    <span class="pl-c1">false</span>
+);
+
+worker.postMessage(cityBinData);</pre></div>
+
+<p>もし、Web Workerを使わない場合は以下の呼び出し方になります。</p>
+
+<div class="highlight highlight-js"><pre>Cty2JSON.analyzeData(cityBinData);</pre></div>
+
+<h2>
+<a id="データ構造" class="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0" aria-hidden="true"><span class="octicon octicon-link"></span></a>データ構造</h2>
+
+<pre>
+root
+├ fileSize
+├ historyDatas
+├ miscDatas 
+└ tileDatas
+</pre>
+
+<h2>
+<a id="デモ" class="anchor" href="#%E3%83%87%E3%83%A2" aria-hidden="true"><span class="octicon octicon-link"></span></a>デモ</h2>
+
+<p><a href="http://jsdo.it/tom-konda/cty2json_demo">ctyファイルを読み込んで都市データの表示</a></p>
+
+<h2>
+<a id="よくありそうな質問" class="anchor" href="#%E3%82%88%E3%81%8F%E3%81%82%E3%82%8A%E3%81%9D%E3%81%86%E3%81%AA%E8%B3%AA%E5%95%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>よくありそうな質問</h2>
+
+<p><strong>ctyファイルはどうやって作成するの？</strong></p>
+
+<p><a href="http://code.google.com/p/micropolis/">Micropolis</a> で都市を新規作成し、保存すればctyファイルが作成されます</p>
+
+<h2>
+<a id="謝辞" class="anchor" href="#%E8%AC%9D%E8%BE%9E" aria-hidden="true"><span class="octicon octicon-link"></span></a>謝辞</h2>
+
+<p>オープンソースの都市開発シミュレーションゲームであるMicropolisを作成したDon Hopkins氏およびにMicropolisのベースとなった都市開発シミュレーションゲームを作成したWill Wright氏に多大な感謝をいたします。</p>
+
+<h2>
+<a id="ライセンス" class="anchor" href="#%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9" aria-hidden="true"><span class="octicon octicon-link"></span></a>ライセンス</h2>
+
+<p>ライセンスはGPLv3になります。</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Cty2JSON maintained by <a href="https://github.com/tom-konda">tom-konda</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-12732179-5");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>

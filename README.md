@@ -1,11 +1,11 @@
 Cty2JSON: https://github.com/tom-konda/cty2json
 
-## これは何？
-Micropolisのcty形式のファイルをJavaScriptを使用し、JSONに変換します。
+## About
+This JavaScript file converts from .cty file ( Micropolis format ) to JSON.
 
-##対応ブラウザ
-* Firefox、Chromiumで動作確認
-* IE 10.0+、Google Chrome、Opera、Safari はおそらく動作するはず
+##Support Browsers
+* Firefox, Chromium
+* IE 10.0+, Google Chrome, Opera and Safari maybe works well.
 
-##ライセンス
-ライセンスはGPLv3になります。
+##License
+Licensed under the GPLv3

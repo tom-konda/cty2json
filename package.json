@@ -1,0 +1,25 @@
+{
+  "name": "cty2json",
+  "version": "0.2.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ts:build-es6": "tsc -p ./src/ts",
+    "test": "mocha --compilers ts:espower-typescript/guess src/test/**/*.ts"
+  },
+  "author": "tom-konda",
+  "license": "GPL-3.0",
+  "engines": {
+    "node": ">=4.2.3"
+  },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "espower-typescript": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-shell": "^0.5.1",
+    "jsdom": "^7.2.2",
+    "power-assert": "^1.2.0",
+    "run-sequence": "^1.1.5",
+    "should": "^8.0.2"
+  }
+}

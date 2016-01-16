@@ -5,7 +5,7 @@ Micropolisのcty形式のファイルをJavaScriptを使用し、JSONに変換�
 
 ##対応ブラウザ
 * Firefox、Chromiumで動作確認
-* IE 10.0+、Google Chrome、Opera、Safari はおそらく動作するはず
+* IE 11、Microsoft Edge、Google Chrome、Opera、Safari はおそらく動作するはず
 
 ##ライセンス
 ライセンスはGPLv3になります。

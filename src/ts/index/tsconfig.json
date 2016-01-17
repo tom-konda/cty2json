@@ -3,12 +3,15 @@
         "target": "es6",
         "module": "commonjs",
         "noImplicitAny": false,
-        "outDir": "../../dist",
+        "outDir": "../../../",
         "rootDir": ".",
         "emitBOM": true,
         "newLine": "LF",
         "sourceMap": false
     },
-    "exclude": [
+    "files": [
+      "index.ts",
+      "../custom_typings/tsd.d.ts",
+      "../typings/tsd.d.ts"
     ]
 }

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ts:build-es6": "tsc -p ./src/ts",
+    "ts:build-es6": "tsc -p ./src/ts/lib",
     "test": "mocha --compilers ts:espower-typescript/guess src/test/**/*.ts"
   },
   "author": "tom-konda",

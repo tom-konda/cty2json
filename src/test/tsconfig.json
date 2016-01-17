@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "emitBOM": true,
+        "newLine": "LF",
+        "sourceMap": false
+    },
+    "files" : [
+      "nodejsTest.ts",
+      "jsdomTest.ts",
+      "custom_typings/tsd.d.ts",
+      "../ts/typings/tsd.d.ts"
+    ]
+}

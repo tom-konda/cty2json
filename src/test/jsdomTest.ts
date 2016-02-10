@@ -1,7 +1,6 @@
 'use strict';
 
 import * as jsdom from 'jsdom';
-let FileAPI = require('file-api');
 let fs = require('fs');
 let file = fs.readFileSync(`${__dirname}/fixture/cty2jsonTest.cty`);
 let base64 = file.toString('base64');

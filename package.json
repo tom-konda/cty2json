@@ -4,8 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prebuild": "npm run clean",
+    "build": "./node_modules/npm-run-all/bin/npm-run-all.js ts:build-* test doc-gen",
+    "postbuild": "npm run doc-gen",
+    "clean": "node -e \"require('del').sync(['temp', 'dist/**.js', 'doc/**']);\"",
     "ts:build-es6": "tsc -p ./src/ts/lib",
-    "test": "mocha --compilers ts:espower-typescript/guess src/test/**/*.ts"
+    "ts:build-es5": "tsc -p ./src/ts/lib/tsconfigs/es5",
+    "doc-gen": "typedoc --includeDeclarations --out ./doc src/ts/custom_typings/cty2json/cty2json.d.ts",
+    "test": "mocha --require ./src/test/espower-typescript-loader src/test/**.ts"
   },
   "author": "tom-konda",
   "license": "GPL-3.0",
@@ -15,11 +21,10 @@
   "devDependencies": {
     "del": "^2.2.0",
     "espower-typescript": "^3.0.0",
-    "gulp": "^3.9.0",
-    "gulp-shell": "^0.5.1",
     "jsdom": "^7.2.2",
+    "npm-run-all": "^1.5.1",
     "power-assert": "^1.2.0",
-    "run-sequence": "^1.1.5",
-    "should": "^8.0.2"
+    "should": "^8.0.2",
+    "tslint-eslint-rules": "^1.0.1"
   }
 }

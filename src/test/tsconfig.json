@@ -11,6 +11,6 @@
       "nodejsTest.ts",
       "jsdomTest.ts",
       "custom_typings/tsd.d.ts",
-      "../ts/typings/tsd.d.ts"
+      "../../typings/main.d.ts"
     ]
 }

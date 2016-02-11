@@ -1,0 +1,12 @@
+{
+  "ambientDependencies": {
+    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#7577a2f4c134790891c52affdacdae99d802571b",
+    "should": "github:DefinitelyTyped/DefinitelyTyped/should/should.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a",
+    "mocha": "github:DefinitelyTyped/DefinitelyTyped/mocha/mocha.d.ts#fe563dff3428bac1260d1794e2c2ecf8f097535a",
+    "empower": "github:DefinitelyTyped/DefinitelyTyped/empower/empower.d.ts#1ff1390269e87394e14abae43ecc422c9e2b2349",
+    "power-assert-formatter": "github:DefinitelyTyped/DefinitelyTyped/power-assert-formatter/power-assert-formatter.d.ts#1ff1390269e87394e14abae43ecc422c9e2b2349",
+    "power-assert": "github:DefinitelyTyped/DefinitelyTyped/power-assert/power-assert.d.ts#1ff1390269e87394e14abae43ecc422c9e2b2349",
+    "jsdom": "github:DefinitelyTyped/DefinitelyTyped/jsdom/jsdom.d.ts#7577a2f4c134790891c52affdacdae99d802571b",
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#7577a2f4c134790891c52affdacdae99d802571b"
+  }
+}

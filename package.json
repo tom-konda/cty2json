@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "npm run clean",
-    "build": "node ./node_modules/.bin/npm-run-all ts:build-* test doc-gen",
+    "build": "node -e \"require('shelljs').exec('npm-run-all ts:build-* test doc-gen')\"",
     "postbuild": "npm run doc-gen",
     "clean": "node -e \"require('del').sync(['temp', 'dist/**.js', 'doc/**']);\"",
     "ts:build-es6": "tsc -p ./src/ts/lib",
     "ts:build-es5": "tsc -p ./src/ts/lib/tsconfigs/es5",
-    "doc-gen": "node ./node_modules/.bin/typedoc --includeDeclarations --out ./doc src/ts/custom_typings/cty2json/cty2json.d.ts",
+    "doc-gen": "node -e \"require('shelljs').exec('typedoc --includeDeclarations --out ./doc src/ts/custom_typings/cty2json/cty2json.d.ts')\"",
     "test": "mocha --require ./src/test/espower-typescript-loader src/test/**.ts"
   },
   "author": "tom-konda",
@@ -24,6 +24,7 @@
     "jsdom": "^7.2.2",
     "npm-run-all": "^1.5.1",
     "power-assert": "^1.2.0",
+    "shelljs": "^0.6.0",
     "should": "^8.0.2",
     "tslint-eslint-rules": "^1.0.1",
     "typedoc": "^0.3.12"

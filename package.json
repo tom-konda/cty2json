@@ -10,7 +10,7 @@
     "clean": "node -e \"require('del').sync(['temp', 'dist/**.js', 'doc/**']);\"",
     "ts:build-es6": "tsc -p ./src/ts/lib",
     "ts:build-es5": "tsc -p ./src/ts/lib/tsconfigs/es5",
-    "doc-gen": "node ./node_modules/.bin/typedoc --includeDeclarations --out ./doc src/ts/custom_typings/cty2json/cty2json.d.ts",
+    "doc-gen": "node -e \"require('shelljs').exec('typedoc --includeDeclarations --out ./doc src/ts/custom_typings/cty2json/cty2json.d.ts')\"",
     "test": "mocha --require ./src/test/espower-typescript-loader src/test/**.ts"
   },
   "author": "tom-konda",

@@ -12,6 +12,6 @@
     "files": [
       "../../cty2json.ts",
       "../../../custom_typings/tsd.d.ts",
-      "../../../typings/tsd.d.ts"
+      "../../../../../typings/main.d.ts"
     ]
 }

@@ -6,11 +6,5 @@
         "emitBOM": false,
         "newLine": "LF",
         "sourceMap": false
-    },
-    "files" : [
-      "nodejsTest.ts",
-      "jsdomTest.ts",
-      "custom_typings/tsd.d.ts",
-      "../../typings/main.d.ts"
-    ]
+    }
 }

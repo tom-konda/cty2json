@@ -1,8 +1,8 @@
 'use strict';
-require('../../dist/cty2json');
+const Cty2JSON = <Cty2JSONStatic>require('../../dist/cty2json');
 
-let fs = require('fs');
-let powAssert = require('power-assert');
+import fs = require('fs');
+import powAssert = require('power-assert');
 
 describe(
   'cty2json',

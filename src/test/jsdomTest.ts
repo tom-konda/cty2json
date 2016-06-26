@@ -1,11 +1,11 @@
 'use strict';
 
 import * as jsdom from 'jsdom';
-let fs = require('fs');
+import fs = require('fs');
 let file = fs.readFileSync(`${__dirname}/fixture/cty2jsonTest.cty`);
 let base64 = file.toString('base64');
-let powAssert = require('power-assert');
-require('../../dist/cty2json');
+import powAssert = require('power-assert');
+const Cty2JSON = <Cty2JSONStatic>require('../../dist/cty2json');
 
 let doc = jsdom.jsdom(
   '<html><head></head><body></body></html>',

@@ -5,7 +5,7 @@
         "noImplicitAny": false,
         "outFile": "../../../../../dist/cty2json.es5.js",
         "rootDir": "../../",
-        "emitBOM": true,
+        "emitBOM": false,
         "newLine": "LF",
         "sourceMap": false
     },

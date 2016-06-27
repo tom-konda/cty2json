@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "outDir": "../../../bin",
+        "rootDir": ".",
+        "emitBOM": false,
+        "newLine": "LF",
+        "sourceMap": false
+    }
+}

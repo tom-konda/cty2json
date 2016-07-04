@@ -1,34 +1,34 @@
 'use strict';
 
-import * as jsdom from 'jsdom';
+import jsdom = require('jsdom');
 import fs = require('fs');
-let file = fs.readFileSync(`${__dirname}/fixture/cty2jsonTest.cty`);
-let base64 = file.toString('base64');
+const file = fs.readFileSync(`${__dirname}/fixture/cty2jsonTest.cty`);
+const base64 = file.toString('base64');
 import powAssert = require('power-assert');
 const Cty2JSON = <Cty2JSONStatic>require('../../dist/cty2json');
 
-let doc = jsdom.jsdom(
+const doc = jsdom.jsdom(
   '<html><head></head><body></body></html>',
   {
   }
 );
 
-let win = doc.defaultView;
-let dataURLSch = `data:application/octet-binary;base64,${base64}`;
+const win = doc.defaultView;
+const dataURLSch = `data:application/octet-binary;base64,${base64}`;
 
-let xhr = new win.XMLHttpRequest();
+const xhr = new win.XMLHttpRequest();
 
 xhr.onreadystatechange = function() {
-  if (xhr.readyState == 4) {
-    let json = Cty2JSON.analyzeData(xhr.response);
-    let cityData = JSON.parse(json);
+  if (xhr.readyState === 4) {
+    const json = Cty2JSON.analyzeData(xhr.response);
+    const cityData = <Cty2JSONFileFormat>JSON.parse(json);
     describe(
-      'jsDomcty2json',
+      'jsDOM Cty2JSON',
       function () {
         it(
-          'fileSize',
+          'Get City Budget',
           function () {
-            powAssert.deepEqual(cityData.fileSize ,27120, 'File Size is not matched.');
+            powAssert.deepEqual(cityData.miscDatas.budget , 10560, 'File is not analyzed correctly.');
           }
         )
       }

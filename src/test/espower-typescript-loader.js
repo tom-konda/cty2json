@@ -1,8 +1,7 @@
 'use strict';
 const path = require('path');
 const fs = require('fs');
-const espowerTsPath = require.resolve('espower-typescript');
-const ts = require(`${path.relative(__dirname, path.dirname(espowerTsPath))}/node_modules/typescript`)
+const ts = require(`typescript`)
 
 const cwd = 'src/test';
 let tsconfigPath = `${cwd}/tsconfig.json`;

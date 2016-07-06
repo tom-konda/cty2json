@@ -6,3 +6,5 @@ Thumb.db
 /doc
 /dist
 /typings
+/bin
+index.js

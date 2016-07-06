@@ -10,34 +10,43 @@ describe(
   function() {
     it(
       'File is missing',
-      function (done) {
-        childProc.exec(
+      function () {
+        const result = childProc.spawnSync(
+          'node',
           [
-            'node',
             './bin/cli.js',
             `${__dirname}/fixture/c.cty`,
-          ].join(' '),
-          (error, stdout, stderr) => {
-            powAssert.notEqual(error, null, 'File check is not worked.');
-            done();
-          }
+          ]
         );
+        powAssert.notEqual(result.stderr.length, 0, 'File check is not worked.');
       }
     )
     it(
       'File is wrong format',
-      function (done) {
-        childProc.exec(
+      function () {
+        const result = childProc.spawnSync(
+          'node',
           [
-            'node',
             './bin/cli.js',
             `${__dirname}/fixture/wrong.cty`,
-          ].join(' '),
-          (error, stdout, stderr) => {
-            powAssert.notEqual(error, null, 'File format is not checked.');
-            done();
-          }
+          ]
         );
+        powAssert.notEqual(result.stderr.length, 0, 'File format is not checked.');
+      }
+    )
+    it(
+      'Output to non-exsistent dircectory',
+      function () {
+        const result = childProc.spawnSync(
+          'node',
+          [
+            './bin/cli.js',
+            `${__dirname}/fixture/cty2jsonTest.cty`,
+            `-o`,
+            `foobar/hogehoge.json`
+          ]
+        );
+        powAssert.notEqual(result.stderr.length, 0, `Output error isn't checked.`);
       }
     )
   }
@@ -46,7 +55,6 @@ describe(
 describe(
   'cli Cty2JSON output test',
   function() {
-    let tmpFileName = `cty2json-${new Date().getTime()}-test.json`;
     let tmpFile:tmp.SynchrounousResult;
     before(
       function () {
@@ -58,31 +66,29 @@ describe(
 
     it(
       'Output test',
-      function (done) {
-        childProc.exec(
+      function () {
+        const result = childProc.spawnSync(
+          'node',
           [
-            'node',
             './bin/cli.js',
             `${__dirname}/fixture/cty2jsonTest.cty`,
-          ].join(' '),
-          (error, stdout, stderr) => {
-            powAssert.notEqual(stdout , null, 'Output is not correctly.');
-            done()
-          }
+          ]
         );
+        const cityData = <Cty2JSONFileFormat>JSON.parse(result.stdout);
+        powAssert.deepEqual(cityData.miscDatas.budget , 10560, 'Output is not correctly.');
       }
     )
     it(
       'JSON output test',
       function () {
-        childProc.execSync(
+        childProc.spawnSync(
+          'node',
           [
-            'node',
             './bin/cli.js',
             `${__dirname}/fixture/cty2jsonTest.cty`,
             '-o',
             `${tmpFile.name}`,
-          ].join(' ')
+          ]
         );
         const json = fs.readFileSync(`${tmpFile.name}`, 'utf8');
         const cityData = <Cty2JSONFileFormat>JSON.parse(json);

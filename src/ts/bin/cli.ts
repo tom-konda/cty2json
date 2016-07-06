@@ -54,7 +54,7 @@ const outputJSON = (jsonObj:any, options:any) => {
         )
       }
       else {
-        console.log(JSONtext);
+        process.stdout.write(JSONtext);
         resolve();
       }
     }

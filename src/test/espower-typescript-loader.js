@@ -4,7 +4,7 @@ const fs = require('fs');
 const ts = require(`typescript`)
 
 const cwd = 'src/test';
-let tsconfigPath = `${cwd}/tsconfig.json`;
+const tsconfigPath = `${cwd}/tsconfig.json`;
 let tsconfigBasepath = null;
 let compilerOptions = null;
 if (tsconfigPath) {
@@ -13,26 +13,26 @@ if (tsconfigPath) {
 }
 
 require('espower-typescript')({
-    // directory where match starts with
-    cwd: cwd,
+  // directory where match starts with
+  cwd: cwd,
 
-    // glob pattern using minimatch module
-    pattern: 'test/**/*.ts',
+  // glob pattern using minimatch module
+  pattern: 'test/**/*.ts',
 
-    // options for espower module
-    espowerOptions: {
-        patterns: [
-            'assert(value, [message])',
-            'assert.ok(value, [message])',
-            'assert.equal(actual, expected, [message])',
-            'assert.notEqual(actual, expected, [message])',
-            'assert.strictEqual(actual, expected, [message])',
-            'assert.notStrictEqual(actual, expected, [message])',
-            'assert.deepEqual(actual, expected, [message])',
-            'assert.notDeepEqual(actual, expected, [message])'
-        ]
-    },
-    compilerOptions : compilerOptions
+  // options for espower module
+  espowerOptions: {
+    patterns: [
+      'assert(value, [message])',
+      'assert.ok(value, [message])',
+      'assert.equal(actual, expected, [message])',
+      'assert.notEqual(actual, expected, [message])',
+      'assert.strictEqual(actual, expected, [message])',
+      'assert.notStrictEqual(actual, expected, [message])',
+      'assert.deepEqual(actual, expected, [message])',
+      'assert.notDeepEqual(actual, expected, [message])'
+    ]
+  },
+  compilerOptions : compilerOptions
 });
 
 function parseTsConfig(tsconfigPath) {

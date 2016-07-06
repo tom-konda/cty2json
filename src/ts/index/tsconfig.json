@@ -5,13 +5,9 @@
         "noImplicitAny": false,
         "outDir": "../../../",
         "rootDir": ".",
-        "emitBOM": true,
         "newLine": "LF",
         "sourceMap": false
     },
-    "files": [
-      "index.ts",
-      "../custom_typings/tsd.d.ts",
-      "../../../typings/main.d.ts"
+    "exclude": [
     ]
 }

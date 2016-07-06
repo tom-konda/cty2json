@@ -3,11 +3,10 @@
         "target": "es6",
         "module": "commonjs",
         "noImplicitAny": false,
-        "outDir": "../../../",
+        "outDir": "../../../bin",
         "rootDir": ".",
+        "emitBOM": false,
         "newLine": "LF",
         "sourceMap": false
-    },
-    "exclude": [
-    ]
+    }
 }

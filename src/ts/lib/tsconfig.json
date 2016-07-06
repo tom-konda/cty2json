@@ -5,13 +5,11 @@
         "noImplicitAny": false,
         "outDir": "../../../dist",
         "rootDir": ".",
-        "emitBOM": true,
+        "emitBOM": false,
         "newLine": "LF",
         "sourceMap": false
     },
-    "files": [
-      "cty2json.ts",
-      "../custom_typings/tsd.d.ts",
-      "../../../typings/main.d.ts"
+    "exclude": [
+      "tsconfigs/**"
     ]
 }

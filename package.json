@@ -13,7 +13,7 @@
     "install:typings-index" : "node -e \"require('shelljs').exec('typings i --cwd ./src/ts/index');\"",
     "install:typings-test" : "node -e \"require('shelljs').exec('typings i --cwd ./src/test');\"",
     "prebuild": "npm run clean",
-    "build": "node -e \"require('shelljs').exec('npm-run-all ts:build-es* ts:build-bin test doc-gen');\"",
+    "build": "node -e \"require('shelljs').exec('npm-run-all ts:build-* test doc-gen');\"",
     "postbuild": "npm run doc-gen",
     "clean": "node -e \"require('shelljs').rm('-R', ['temp', 'bin/**','dist/**.js', 'doc/**']);\"",
     "ts:build-bin": "node -e \"require('shelljs').exec('tsc -p ./src/ts/bin');\"",

@@ -8,6 +8,19 @@ This JavaScript library converts from .cty file ( Micropolis format ) to JSON.
 * IE 11, Google Chrome, Opera and Safari maybe works well.
 
 ##Usage
+### CLI
+```bash
+$ cty2json [options] <inputfile>
+```
+
+Options
+
+```bash
+    -h, --help                 output usage information
+    -V, --version              output the version number
+    -o, --output <outputfile>  Output JSON file
+```
+
 ### Library
 #### Browser
 

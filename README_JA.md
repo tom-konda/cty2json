@@ -8,6 +8,19 @@ Micropolisのcty形式のファイルをJavaScriptを使用して、JSONに変�
 * IE 11、Microsoft Edge、Google Chrome、Opera、Safari はおそらく動作するはず
 
 ##使い方
+### CLI
+```bash
+$ cty2json [options] <inputfile>
+```
+
+オプション
+
+```bash
+    -h, --help                 ヘルプの出力
+    -V, --version              バージョンの出力
+    -o, --output <outputfile>  JSONファイルの出力
+```
+
 ### ライブラリ
 #### ブラウザ
 

@@ -1,32 +1,50 @@
 {
   "name": "cty2json",
-  "version": "0.2.0",
+  "bin": {
+    "cty2json": "bin/cli.js"
+  },
+  "version": "0.3.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "node -e \"require('shelljs').exec('npm-run-all install:typings-*');\"",
+    "install:typings-lib" : "node -e \"require('shelljs').exec('typings i --cwd ./src/ts/lib');\"",
+    "install:typings-bin" : "node -e \"require('shelljs').exec('typings i --cwd ./src/ts/bin');\"",
+    "install:typings-index" : "node -e \"require('shelljs').exec('typings i --cwd ./src/ts/index');\"",
+    "install:typings-test" : "node -e \"require('shelljs').exec('typings i --cwd ./src/test');\"",
     "prebuild": "npm run clean",
-    "build": "node -e \"require('shelljs').exec('npm-run-all ts:build-* test doc-gen');\"",
+    "build": "node -e \"require('shelljs').exec('npm-run-all ts:build-es* ts:build-bin test doc-gen');\"",
     "postbuild": "npm run doc-gen",
-    "clean": "node -e \"require('del').sync(['temp', 'dist/**.js', 'doc/**']);\"",
-    "ts:build-es6": "tsc -p ./src/ts/lib",
-    "ts:build-es5": "tsc -p ./src/ts/lib/tsconfigs/es5",
-    "doc-gen": "node -e \"require('shelljs').exec('typedoc --includeDeclarations --out ./doc src/ts/custom_typings/cty2json/cty2json.d.ts')\"",
-    "test": "mocha --require ./src/test/espower-typescript-loader src/test/**.ts"
+    "clean": "node -e \"require('shelljs').rm('-R', ['temp', 'bin/**','dist/**.js', 'doc/**']);\"",
+    "ts:build-bin": "node -e \"require('shelljs').exec('tsc -p ./src/ts/bin');\"",
+    "ts:build-index": "node -e \"require('shelljs').exec('tsc -p ./src/ts/index');\"",
+    "ts:build-es6": "node -e \"require('shelljs').exec('tsc -p ./src/ts/lib');\"",
+    "ts:build-es5": "node -e \"require('shelljs').exec('tsc -p ./src/ts/lib/tsconfigs/es5');\"",
+    "doc-gen": "node -e \"require('shelljs').exec('typedoc --target es5 --includeDeclarations --out ./doc src/ts/lib/custom_typings/cty2json/cty2json.d.ts')\"",
+    "test": "node -e \"require('shelljs').exec('mocha --require ./src/test/espower-typescript-loader src/test/**.ts')\""
   },
   "author": "tom-konda",
   "license": "GPL-3.0",
   "engines": {
-    "node": ">=4.3.0"
+    "node": ">=4.0.0"
   },
+  "engine-strict": true,
   "devDependencies": {
-    "del": "^2.2.0",
-    "espower-typescript": "^4.0.0",
-    "jsdom": "^7.2.2",
-    "npm-run-all": "^1.5.1",
-    "power-assert": "^1.2.0",
-    "shelljs": "^0.6.0",
-    "should": "^8.0.2",
-    "tslint-eslint-rules": "^1.0.1",
-    "typedoc": "^0.3.12"
+    "espower-typescript": "^5.0.1",
+    "jsdom": "^9.3.0",
+    "mocha": "^2.5.3",
+    "npm-run-all": "^2.3.0",
+    "power-assert": "^1.4.1",
+    "shelljs": "^0.7.0",
+    "should": "^9.0.2",
+    "tmp": "0.0.28",
+    "tslint": "^3.13.0",
+    "tslint-eslint-rules": "^1.3.0",
+    "typedoc": "^0.4.4",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.1"
+  },
+  "dependencies": {
+    "commander": "^2.9.0"
   }
 }

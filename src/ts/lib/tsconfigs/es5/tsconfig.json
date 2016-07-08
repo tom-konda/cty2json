@@ -1,17 +1,12 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "module": "commonjs",
+        "module": "system",
         "noImplicitAny": false,
         "outFile": "../../../../../dist/cty2json.es5.js",
         "rootDir": "../../",
-        "emitBOM": true,
+        "emitBOM": false,
         "newLine": "LF",
         "sourceMap": false
-    },
-    "files": [
-      "../../cty2json.ts",
-      "../../../custom_typings/tsd.d.ts",
-      "../../../../../typings/main.d.ts"
-    ]
+    }
 }

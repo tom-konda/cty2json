@@ -2,12 +2,8 @@
     "compilerOptions": {
         "target": "es6",
         "module": "commonjs",
-        "noImplicitAny": false,
-        "outDir": "../../../",
-        "rootDir": ".",
+        "emitBOM": false,
         "newLine": "LF",
         "sourceMap": false
-    },
-    "exclude": [
-    ]
+    }
 }

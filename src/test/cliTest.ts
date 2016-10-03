@@ -2,7 +2,6 @@
 import powAssert = require('power-assert');
 import childProc = require('child_process');
 import fs = require('fs');
-import os = require('os');
 import tmp = require('tmp');
 
 describe(
@@ -75,7 +74,7 @@ describe(
           ]
         );
         const cityData = <Cty2JSONFileFormat>JSON.parse(result.stdout);
-        powAssert.deepEqual(cityData.miscDatas.budget , 10560, 'Output is not correctly.');
+        powAssert.deepEqual(cityData.miscData.budget , 10560, 'Output is not correctly.');
       }
     )
     it(
@@ -92,7 +91,7 @@ describe(
         );
         const json = fs.readFileSync(`${tmpFile.name}`, 'utf8');
         const cityData = <Cty2JSONFileFormat>JSON.parse(json);
-        powAssert.deepEqual(cityData.miscDatas.budget , 10560, 'File is not created correctly.');
+        powAssert.deepEqual(cityData.miscData.budget , 10560, 'File is not created correctly.');
       }
     )
 

@@ -81,7 +81,7 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
 ```
 {
   fileSize : Integer,
-  historyDatas : {
+  historyData : {
     com : [
       0-255, // 240 times
     ],
@@ -101,7 +101,7 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
       0-255, // 240 times
     ],
   },
-  miscDatas : {
+  miscData : {
     CPopulation : Integer,
     CValve : Integer,
     IPopulation : Integer,
@@ -124,11 +124,11 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
     policeCovered : 0-65536,
     polluteRamp : Integer,
     pollutionAve : Integer,
-    roadCovered : 0-65536,
+    transportCovered : 0-65536,
     soundOn : 0 or 1,
     tax : 0-20
   },
-  tileDatas : [
+  tileData : [
     [
       {
         animated : 0 or 1,

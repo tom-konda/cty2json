@@ -10,7 +10,7 @@ declare module 'cty2json' {
 
 interface Cty2JSONFileFormat {
   fileSize : number
-  historyDatas : {
+  historyData : {
     res : number[],
     com : number[],
     ind : number[],
@@ -18,7 +18,7 @@ interface Cty2JSONFileFormat {
     pol : number[],
     val : number[],
   },
-  miscDatas : {
+  miscData : {
     RPopulation: number,
     CPopulation: number,
     IPopulation: number,
@@ -43,9 +43,9 @@ interface Cty2JSONFileFormat {
     gameSpeed: number,
     policeCovered: number,
     fireCovered: number,
-    roadCovered: number
+    transportCovered: number
   },
-  tileDatas : [
+  tileData : [
     [
       {
         building: number,

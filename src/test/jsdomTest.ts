@@ -28,7 +28,7 @@ xhr.onreadystatechange = function() {
         it(
           'Get City Budget',
           function () {
-            powAssert.deepEqual(cityData.miscDatas.budget , 10560, 'File is not analyzed correctly.');
+            powAssert.deepEqual(cityData.miscData.budget , 10560, 'File is not analyzed correctly.');
           }
         )
       }

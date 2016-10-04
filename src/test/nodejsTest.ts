@@ -1,5 +1,5 @@
 'use strict';
-const Cty2JSON = <Cty2JSONStatic>require('../../dist/cty2json');
+const Cty2JSON = <Cty2JSONStatic>require('../../lib/cty2json');
 
 import fs = require('fs');
 import powAssert = require('power-assert');

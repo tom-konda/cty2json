@@ -3,11 +3,11 @@ Cty2JSON: https://github.com/tom-konda/cty2json
 ## About
 This JavaScript library converts from .cty file ( Micropolis format ) to JSON.
 
-##Support Browsers
+## Support Browsers
 * Firefox, Chromium
 * IE 11, Google Chrome, Opera and Safari maybe works well.
 
-##Usage
+## Usage
 ### CLI
 ```bash
 $ cty2json [options] <inputfile>
@@ -77,7 +77,7 @@ let uint8arr = new Uint8Array(file);
 let json = Cty2JSON.analyzeData(uint8arr.buffer);
 ```
 
-##Output Format
+## Output Format
 ```
 {
   fileSize : Integer,
@@ -145,5 +145,5 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
 }
 ```
 
-##License
+## License
 Licensed under the GPLv3

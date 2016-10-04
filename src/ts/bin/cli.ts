@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*!
-* Cty2JSON ver 0.3
+* Cty2JSON ver 0.4
 * Copyright (C) 2016 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -12,9 +12,16 @@ import fs = require('fs');
 const fileAccessCheck = (inputFile:string) => {
   return new Promise(
     (resolve, reject) => {
+      let isfileReadable:number;
+      if (typeof fs.constants === 'undefined') {
+        isfileReadable = (<any>fs).R_OK;
+      }
+      else {
+        isfileReadable = fs.constants.R_OK;
+      }
       fs.access(
         inputFile,
-        fs.R_OK,
+        isfileReadable,
         (error) => {
           error ? reject(error) : resolve(inputFile);
         }
@@ -32,7 +39,8 @@ const fileFormatCheck = (inputfile:string) => {
       try {
         const ctyJSON = JSON.parse(json);
         resolve(ctyJSON);
-      } catch (error) {
+      }
+      catch (error) {
         reject(error);
       }
     }
@@ -91,7 +99,7 @@ const convertCty2JSON = function (inputCTYFile:string, options:any) {
 }
 
 
-commander.version('0.3.0')
+commander.version('0.4.0')
   .command('<inputFile>', 'Path to a Micropolis .cty file')
   .option('-o, --output <outputfile>', 'Output JSON file')
   .description('Output JSON File from a Micropolis cty file')

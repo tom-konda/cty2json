@@ -13,7 +13,7 @@ describe(
         const file = fs.readFileSync(`${__dirname}/fixture/cty2jsonTest.cty`);
         const json = Cty2JSON.analyzeData(new Uint8Array(file).buffer);
         const cityData = <Cty2JSONFileFormat>JSON.parse(json);
-        powAssert.deepEqual(cityData.miscDatas.budget , 10560, 'File is not analyzed correctly.');
+        powAssert.deepEqual(cityData.miscData.budget , 10560, 'File is not analyzed correctly.');
       }
     )
   }

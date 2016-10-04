@@ -1,5 +1,5 @@
 /*!
-* Cty2JSON ver 0.3
+* Cty2JSON ver 0.4.0
 * Copyright (C) 2016 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -10,18 +10,17 @@
   'use strict';
   const isNode = ('process' in global);
 
-  let Cty2JSONAnalyzeData = function(data: ArrayBuffer): string {
-    let x: number, y: number, tile: number;
+  const Cty2JSONAnalyzeData = function(data: ArrayBuffer): string {
     const SHORT_BYTE_LENGTH = 2,
-      DEFAULT_WIDTH = 120,
-      DEFAULT_HEIGHT = 100,
-      SOME_EDITION_FILESIZE = 27120;
+          DEFAULT_WIDTH = 120,
+          DEFAULT_HEIGHT = 100,
+          SOME_EDITION_FILESIZE = 27120;
     let offset = 0;
     let cityData = {
       fileSize: 0,
-      historyDatas: {},
-      miscDatas: {},
-      tileDatas: [],
+      historyData: {},
+      miscData: {},
+      tileData: [],
     }
     if (data.byteLength > SOME_EDITION_FILESIZE) {
       // Set 128-byte offset because of following comment in Micropolis.java.
@@ -38,15 +37,15 @@
     const HISTORY_DATA_COUNT = 240,
       HISTORY_DATA_BYTE = HISTORY_DATA_COUNT * SHORT_BYTE_LENGTH;
     // Get history graph datas from city
-    let getHistoryData = function(property) {
-      let historyData = data.slice(offset, offset + HISTORY_DATA_BYTE);
-      cityData.historyDatas[property] = [];
+    const getHistoryData = function(property) {
+      const historyData = data.slice(offset, offset + HISTORY_DATA_BYTE);
+      cityData.historyData[property] = [];
       for (let i = 0; i < HISTORY_DATA_COUNT; ++i) {
-        cityData.historyDatas[property].push(new DataView(historyData, i * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false));
+        cityData.historyData[property].push(new DataView(historyData, i * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false));
       }
       offset += HISTORY_DATA_BYTE;
     };
-    cityData.historyDatas = {};
+
     getHistoryData('res');
     getHistoryData('com');
     getHistoryData('ind');
@@ -57,16 +56,17 @@
       MISC_DATA_BYTE = MISC_DATA_COUNT * SHORT_BYTE_LENGTH;
     let miscData = data.slice(offset, offset + MISC_DATA_BYTE);
     offset += MISC_DATA_BYTE;
-    cityData.miscDatas = {};
-    let getMiscData = (property: string, miscOffset: number, length: number) => {
-      let sum = 0;
-      for (let i = 0, cnt = length; i < cnt; ++i) {
-        if (i !== 0) {
-          sum <<= 16;
-        }
-        sum += new DataView(miscData, (miscOffset + i) * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false);
+
+    const getMiscData = (property: string, miscOffset: number, length: number) => {
+      let value = 0;
+      switch (length) {
+        case 1:
+          value = new DataView(miscData, miscOffset * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false)
+          break;
+        case 2:
+          value = new DataView(miscData, miscOffset * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH * 2).getInt32(0, false)
       }
-      cityData.miscDatas[property] = sum;
+      cityData.miscData[property] = value;
     };
     getMiscData('RPopulation', 2, 1);
     getMiscData('CPopulation', 3, 1);
@@ -93,24 +93,24 @@
     // Following three values are ratio of n to 65536
     getMiscData('policeCovered', 58, 2);
     getMiscData('fireCovered', 60, 2);
-    getMiscData('roadCovered', 62, 2);
+    getMiscData('transportCovered', 62, 2);
     miscData = null;
     const MAP_DATA_COUNT = DEFAULT_WIDTH * DEFAULT_HEIGHT;
     const MAP_DATA_BYTE = MAP_DATA_COUNT * SHORT_BYTE_LENGTH;
-    let tileData = data.slice(offset, offset + MAP_DATA_BYTE);
+    const tileData = data.slice(offset, offset + MAP_DATA_BYTE);
 
     // Get Tile Data
-    for (y = 0; y < DEFAULT_HEIGHT; ++y) {
-      cityData.tileDatas[y] = [];
-      for (x = 0; x < DEFAULT_WIDTH; ++x) {
-        tile = new DataView(tileData, (x * DEFAULT_HEIGHT + y) * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false);
-        cityData.tileDatas[y][x] = {};
-        cityData.tileDatas[y][x].building = tile & 1023;
-        cityData.tileDatas[y][x].zoneCenter = tile >> 10 & 1;
-        cityData.tileDatas[y][x].animated = tile >> 11 & 1;
-        cityData.tileDatas[y][x].bulldozable = tile >> 12 & 1;
-        cityData.tileDatas[y][x].combustible = tile >> 13 & 1;
-        cityData.tileDatas[y][x].conductive = tile >> 14 & 1;
+    for (let y = 0; y < DEFAULT_HEIGHT; ++y) {
+      cityData.tileData[y] = [];
+      for (let x = 0; x < DEFAULT_WIDTH; ++x) {
+        let tile = new DataView(tileData, (x * DEFAULT_HEIGHT + y) * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false);
+        cityData.tileData[y][x] = {};
+        cityData.tileData[y][x].building = tile & 1023;
+        cityData.tileData[y][x].zoneCenter = tile >> 10 & 1;
+        cityData.tileData[y][x].animated = tile >> 11 & 1;
+        cityData.tileData[y][x].bulldozable = tile >> 12 & 1;
+        cityData.tileData[y][x].combustible = tile >> 13 & 1;
+        cityData.tileData[y][x].conductive = tile >> 14 & 1;
       }
     }
     return JSON.stringify(cityData, null, 2);

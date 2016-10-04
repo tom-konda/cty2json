@@ -3,8 +3,8 @@
         "target": "es5",
         "module": "system",
         "noImplicitAny": false,
-        "outFile": "../../../../../dist/cty2json.es5.js",
-        "rootDir": "../../",
+        "outFile": "../../../lib/cty2json.es5.js",
+        "rootDir": ".",
         "emitBOM": false,
         "newLine": "LF",
         "sourceMap": false

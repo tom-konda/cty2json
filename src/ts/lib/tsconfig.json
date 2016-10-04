@@ -1,9 +1,9 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "es2015",
         "module": "commonjs",
         "noImplicitAny": false,
-        "outDir": "../../../dist",
+        "outDir": "../../../lib",
         "rootDir": ".",
         "emitBOM": false,
         "newLine": "LF",

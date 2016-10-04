@@ -1,13 +1,11 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "es2015",
         "module": "commonjs",
         "noImplicitAny": false,
-        "outDir": "../../../",
+        "outDir": "../../../temp",
         "rootDir": ".",
         "newLine": "LF",
         "sourceMap": false
-    },
-    "exclude": [
-    ]
+    }
 }

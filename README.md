@@ -147,3 +147,7 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
 
 ## License
 Licensed under the GPLv3
+
+## Acknowledgement
+
+- [MicropolisJ](https://github.com/jason17055/micropolis-java) for help to understand .cty file format.

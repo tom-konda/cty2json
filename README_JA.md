@@ -144,5 +144,11 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
   ], 
 }
 ```
+
 ## ライセンス
 ライセンスはGPLv3になります。
+
+## 謝辞
+
+- [MicropolisJ](https://github.com/jason17055/micropolis-java) ： ctyファイルのデータ構造の理解の助けになりました
+

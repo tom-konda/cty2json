@@ -1,5 +1,5 @@
 /*!
-* Cty2JSON ver 0.4.0
+* Cty2JSON ver 0.4.1
 * Copyright (C) 2016 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -16,12 +16,15 @@
           DEFAULT_HEIGHT = 100,
           SOME_EDITION_FILESIZE = 27120;
     let offset = 0;
-    let cityData = {
+
+    let cityData:cty2JSONDataFormat = Object.assign({}, {
       fileSize: 0,
       historyData: {},
       miscData: {},
       tileData: [],
     }
+    );
+
     if (data.byteLength > SOME_EDITION_FILESIZE) {
       // Set 128-byte offset because of following comment in Micropolis.java.
       // ref: https://github.com/jason17055/micropolis-java/blob/9f6ddb4b5f36a005fe4c4f77488d7969eabf0797/src/micropolisj/engine/Micropolis.java#L2254
@@ -37,7 +40,7 @@
     const HISTORY_DATA_COUNT = 240,
       HISTORY_DATA_BYTE = HISTORY_DATA_COUNT * SHORT_BYTE_LENGTH;
     // Get history graph datas from city
-    const getHistoryData = function(property) {
+    const getHistoryData = function(property:string) {
       const historyData = data.slice(offset, offset + HISTORY_DATA_BYTE);
       cityData.historyData[property] = [];
       for (let i = 0; i < HISTORY_DATA_COUNT; ++i) {
@@ -94,7 +97,7 @@
     getMiscData('policeCovered', 58, 2);
     getMiscData('fireCovered', 60, 2);
     getMiscData('transportCovered', 62, 2);
-    miscData = null;
+
     const MAP_DATA_COUNT = DEFAULT_WIDTH * DEFAULT_HEIGHT;
     const MAP_DATA_BYTE = MAP_DATA_COUNT * SHORT_BYTE_LENGTH;
     const tileData = data.slice(offset, offset + MAP_DATA_BYTE);
@@ -104,13 +107,14 @@
       cityData.tileData[y] = [];
       for (let x = 0; x < DEFAULT_WIDTH; ++x) {
         let tile = new DataView(tileData, (x * DEFAULT_HEIGHT + y) * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false);
-        cityData.tileData[y][x] = {};
-        cityData.tileData[y][x].building = tile & 1023;
-        cityData.tileData[y][x].zoneCenter = tile >> 10 & 1;
-        cityData.tileData[y][x].animated = tile >> 11 & 1;
-        cityData.tileData[y][x].bulldozable = tile >> 12 & 1;
-        cityData.tileData[y][x].combustible = tile >> 13 & 1;
-        cityData.tileData[y][x].conductive = tile >> 14 & 1;
+        cityData.tileData[y][x] = {
+          building : tile & 1023,
+          zoneCenter : tile >> 10 & 1,
+          animated : tile >> 11 & 1,
+          bulldozable : tile >> 12 & 1,
+          combustible : tile >> 13 & 1,
+          conductive : tile >> 14 & 1,
+        };
       }
     }
     return JSON.stringify(cityData, null, 2);

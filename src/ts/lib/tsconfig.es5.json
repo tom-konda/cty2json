@@ -1,10 +1,7 @@
 {
     "compilerOptions": {
-        "target": "es2015",
-        "module": "commonjs",
-        "lib": [
-            "es2015"
-        ],
+        "target": "es5",
+        "module": "system",
         "forceConsistentCasingInFileNames": true,
         "noImplicitAny": true,
         "noFallthroughCasesInSwitch": true,
@@ -12,7 +9,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noImplicitUseStrict": false,
-        "outDir": "../../../lib",
+        "outFile": "../../../lib/cty2json.es5.js",
         "rootDir": ".",
         "emitBOM": false,
         "newLine": "LF",

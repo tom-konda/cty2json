@@ -1,12 +1,11 @@
 {
-  "rulesDirectory": "node_modules/tslint-eslint-rules/dist/rules",
+  "rulesDirectory": ["node_modules/tslint-eslint-rules/dist/rules"],
   "rules": {
     "indent": [
       true,
       "spaces"
     ],
     "no-var-keyword": true,
-    "no-var-requires": true,
     "no-consecutive-blank-lines" : true,
     "no-constant-condition": true,
     "no-trailing-whitespace": true,

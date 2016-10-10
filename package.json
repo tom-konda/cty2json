@@ -1,32 +1,53 @@
 {
   "name": "cty2json",
-  "version": "0.2.0",
-  "description": "",
+  "bin": {
+    "cty2json": "bin/cli.js"
+  },
+  "version": "0.4.1",
+  "description": "This JavaScript library converts from .cty file ( Micropolis format ) to JSON.",
   "main": "index.js",
   "scripts": {
     "prebuild": "npm run clean",
-    "build": "node -e \"require('shelljs').exec('npm-run-all ts:build-* test doc-gen');\"",
+    "build": "node -e \"require('shelljs').exec('npm-run-all --parallel ts:build-* --serial move:temp clean:temp test');\"",
     "postbuild": "npm run doc-gen",
-    "clean": "node -e \"require('del').sync(['temp', 'dist/**.js', 'doc/**']);\"",
-    "ts:build-es6": "tsc -p ./src/ts/lib",
-    "ts:build-es5": "tsc -p ./src/ts/lib/tsconfigs/es5",
-    "doc-gen": "node -e \"require('shelljs').exec('typedoc --includeDeclarations --out ./doc src/ts/custom_typings/cty2json/cty2json.d.ts')\"",
-    "test": "mocha --require ./src/test/espower-typescript-loader src/test/**.ts"
+    "clean": "node -e \"require('shelljs').rm('-R', ['./temp', './bin/**','./lib/**.js', './doc', './index.js']);\"",
+    "clean:temp": "node -e \"require('shelljs').rm('-R', ['temp']);\"",
+    "move:temp": "node -e \"require('shelljs').mv('temp/index.js', './')\"",
+    "ts:build-bin": "node -e \"require('shelljs').exec('tsc -p ./src/ts/bin');\"",
+    "ts:build-index": "node -e \"require('shelljs').exec('tsc -p ./src/ts/index');\"",
+    "ts:build-es6": "node -e \"require('shelljs').exec('tsc -p ./src/ts/lib');\"",
+    "ts:build-es5": "node -e \"require('shelljs').exec('tsc -p ./src/ts/lib/tsconfig.es5.json');\"",
+    "doc-gen-org": "node -e \"require('shelljs').exec('typedoc --readme ./README.md --target ES6  --out ./doc ./src/ts/lib/custom_typings/tsd.d.ts')\"",
+    "doc-gen": "node -e \"require('shelljs').exec('typedoc --readme ./README.md --target ES6 --includeDeclarations --out ./doc src/ts/lib/custom_typings/cty2json/cty2json.d.ts')\"",
+    "test": "node -e \"require('shelljs').exec('mocha --require ./src/test/espower-typescript-loader src/test/**.ts')\""
   },
   "author": "tom-konda",
   "license": "GPL-3.0",
   "engines": {
-    "node": ">=4.3.0"
+    "node": ">=4.0.0"
   },
+  "engine-strict": true,
   "devDependencies": {
-    "del": "^2.2.0",
-    "espower-typescript": "^4.0.0",
-    "jsdom": "^7.2.2",
-    "npm-run-all": "^1.5.1",
-    "power-assert": "^1.2.0",
-    "shelljs": "^0.6.0",
-    "should": "^8.0.2",
-    "tslint-eslint-rules": "^1.0.1",
-    "typedoc": "^0.3.12"
+    "@types/commander": "^2.3.30",
+    "@types/jsdom": "^2.0.29",
+    "@types/mocha": "^2.2.32",
+    "@types/node": "^6.0.41",
+    "@types/power-assert": "^1.4.29",
+    "@types/tmp": "0.0.31",
+    "empower": "^1.2.1",
+    "espower-typescript": "^5.0.1",
+    "jsdom": "^9.5.0",
+    "mocha": "^3.1.0",
+    "npm-run-all": "^3.1.0",
+    "power-assert": "^1.4.1",
+    "shelljs": "^0.7.4",
+    "tmp": "0.0.29",
+    "tslint": "^3.15.1",
+    "tslint-eslint-rules": "^2.0.1",
+    "typedoc": "^0.4.5",
+    "typescript": "^2.0.3"
+  },
+  "dependencies": {
+    "commander": "^2.9.0"
   }
 }

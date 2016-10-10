@@ -3,11 +3,24 @@ Cty2JSON: https://github.com/tom-konda/cty2json
 ## これは何？
 Micropolisのcty形式のファイルをJavaScriptを使用して、JSONに変換します。
 
-##対応ブラウザ
+## 対応ブラウザ
 * Firefox、Chromiumで動作確認
 * IE 11、Microsoft Edge、Google Chrome、Opera、Safari はおそらく動作するはず
 
-##使い方
+## 使い方
+### CLI
+```bash
+$ cty2json [options] <inputfile>
+```
+
+オプション
+
+```bash
+    -h, --help                 ヘルプの出力
+    -V, --version              バージョンの出力
+    -o, --output <outputfile>  JSONファイルの出力
+```
+
 ### ライブラリ
 #### ブラウザ
 
@@ -64,11 +77,11 @@ let uint8arr = new Uint8Array(file);
 let json = Cty2JSON.analyzeData(uint8arr.buffer);
 ```
 
-##出力フォーマット
+## 出力フォーマット
 ```
 {
   fileSize : Integer,
-  historyDatas : {
+  historyData : {
     com : [
       0-255, // 240 times
     ],
@@ -88,7 +101,7 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
       0-255, // 240 times
     ],
   },
-  miscDatas : {
+  miscData : {
     CPopulation : Integer,
     CValve : Integer,
     IPopulation : Integer,
@@ -111,11 +124,11 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
     policeCovered : 0-65536,
     polluteRamp : Integer,
     pollutionAve : Integer,
-    roadCovered : 0-65536,
+    transportCovered : 0-65536,
     soundOn : 0 or 1,
     tax : 0-20
   },
-  tileDatas : [
+  tileData : [
     [
       {
         animated : 0 or 1,
@@ -131,5 +144,11 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
   ], 
 }
 ```
-##ライセンス
+
+## ライセンス
 ライセンスはGPLv3になります。
+
+## 謝辞
+
+- [MicropolisJ](https://github.com/jason17055/micropolis-java) ： ctyファイルのデータ構造の理解の助けになりました
+

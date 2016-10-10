@@ -1,11 +1,11 @@
 'use strict';
-const Cty2JSON = <Cty2JSONStatic>require('../../lib/cty2json');
+require('../../');
 
 import fs = require('fs');
 import powAssert = require('power-assert');
 
 describe(
-  'Node.js Cty2JSON',
+  'index.js Cty2JSON',
   function () {
     it(
       'Get City Budget',

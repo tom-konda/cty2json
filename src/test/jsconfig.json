@@ -2,7 +2,6 @@
     "compilerOptions": {
         "target": "es2015",
         "module": "commonjs",
-        "noImplicitAny": true,
         "emitBOM": false,
         "newLine": "LF",
         "sourceMap": false

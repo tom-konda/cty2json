@@ -1,7 +1,7 @@
 /node_modules
-/src/ts/typings
 .DS_Store
 Thumb.db
 /doc
-/dist
-/typings
+/lib
+/bin
+index.js

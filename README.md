@@ -3,11 +3,24 @@ Cty2JSON: https://github.com/tom-konda/cty2json
 ## About
 This JavaScript library converts from .cty file ( Micropolis format ) to JSON.
 
-##Support Browsers
+## Support Browsers
 * Firefox, Chromium
 * IE 11, Google Chrome, Opera and Safari maybe works well.
 
-##Usage
+## Usage
+### CLI
+```bash
+$ cty2json [options] <inputfile>
+```
+
+Options
+
+```bash
+    -h, --help                 output usage information
+    -V, --version              output the version number
+    -o, --output <outputfile>  Output JSON file
+```
+
 ### Library
 #### Browser
 
@@ -64,11 +77,11 @@ let uint8arr = new Uint8Array(file);
 let json = Cty2JSON.analyzeData(uint8arr.buffer);
 ```
 
-##Output Format
+## Output Format
 ```
 {
   fileSize : Integer,
-  historyDatas : {
+  historyData : {
     com : [
       0-255, // 240 times
     ],
@@ -88,7 +101,7 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
       0-255, // 240 times
     ],
   },
-  miscDatas : {
+  miscData : {
     CPopulation : Integer,
     CValve : Integer,
     IPopulation : Integer,
@@ -111,7 +124,7 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
     policeCovered : 0-65536,
     polluteRamp : Integer,
     pollutionAve : Integer,
-    roadCovered : 0-65536,
+    transportCovered : 0-65536,
     soundOn : 0 or 1,
     tax : 0-20
   },
@@ -132,5 +145,9 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
 }
 ```
 
-##License
+## License
 Licensed under the GPLv3
+
+## Acknowledgement
+
+- [MicropolisJ](https://github.com/jason17055/micropolis-java) for help to understand .cty file format.

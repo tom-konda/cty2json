@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /*!
-* Cty2JSON ver 0.4
+* Cty2JSON ver 0.4.1
 * Copyright (C) 2016 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html
 */
-require('../dist/cty2json.js');
+require('../lib/cty2json.js');
 import commander = require('commander');
 import fs = require('fs');
 
@@ -98,8 +98,7 @@ const convertCty2JSON = function (inputCTYFile:string, options:any) {
     );
 }
 
-
-commander.version('0.4.0')
+commander.version('0.4.1')
   .command('<inputFile>', 'Path to a Micropolis .cty file')
   .option('-o, --output <outputfile>', 'Output JSON file')
   .description('Output JSON File from a Micropolis cty file')

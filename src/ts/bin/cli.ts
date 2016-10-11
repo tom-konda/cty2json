@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*!
-* Cty2JSON ver 0.4.1
+* Cty2JSON ver 0.4.2
 * Copyright (C) 2016 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -14,7 +14,8 @@ const fileAccessCheck = (inputFile:string) => {
     (resolve, reject) => {
       let isfileReadable:number;
       if (typeof fs.constants === 'undefined') {
-        isfileReadable = (<any>fs).R_OK;
+        // for Node 4.x
+        isfileReadable = fs.R_OK;
       }
       else {
         isfileReadable = fs.constants.R_OK;

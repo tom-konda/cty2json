@@ -1,5 +1,5 @@
 /*!
-* Cty2JSON ver 0.4.1
+* Cty2JSON ver 0.4.2
 * Copyright (C) 2016 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -17,13 +17,12 @@
           SOME_EDITION_FILESIZE = 27120;
     let offset = 0;
 
-    let cityData:cty2JSONDataFormat = Object.assign({}, {
+    let cityData:cty2JSONDataFormat = {
       fileSize: 0,
       historyData: {},
       miscData: {},
       tileData: [],
-    }
-    );
+    };
 
     if (data.byteLength > SOME_EDITION_FILESIZE) {
       // Set 128-byte offset because of following comment in Micropolis.java.

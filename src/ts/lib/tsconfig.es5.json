@@ -1,7 +1,12 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "module": "system",
+        "lib": [
+            "es5"
+        ],
+        "types": [ 
+            "node"
+        ],
         "forceConsistentCasingInFileNames": true,
         "noImplicitAny": true,
         "noFallthroughCasesInSwitch": true,

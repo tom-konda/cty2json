@@ -2,13 +2,13 @@ import buble from 'rollup-plugin-buble';
 
 export default {
   entry: './lib/cty2json.js',
-  targets: [
-    { dest: 'lib/cty2json.cjs.js', format: 'cjs' },
-    { dest: 'index.js', format: 'cjs' },
-  ],
+  dest: 'lib/cty2json.legacy.js',
+  format: 'iife',
+  legacy: true,
+  moduleName: 'Cty2JSON',
   plugins: [
     buble({
-      node: 4,
+      ie: 8,
     })
   ]
 }

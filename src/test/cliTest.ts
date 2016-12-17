@@ -1,12 +1,12 @@
 'use strict';
-import powAssert = require('power-assert');
+import assert = require('power-assert');
 import childProc = require('child_process');
 import fs = require('fs');
 import tmp = require('tmp');
 
 describe(
   'cli Cty2JSON failure test',
-  function() {
+  function () {
     it(
       'File is missing',
       function () {
@@ -17,7 +17,7 @@ describe(
             `${__dirname}/fixture/c.cty`,
           ]
         );
-        powAssert.notEqual(result.stderr.length, 0, 'File check is not worked.');
+        assert.notEqual(result.stderr.length, 0, 'File check is not worked.');
       }
     )
     it(
@@ -30,7 +30,7 @@ describe(
             `${__dirname}/fixture/wrong.cty`,
           ]
         );
-        powAssert.notEqual(result.stderr.length, 0, 'File format is not checked.');
+        assert.notEqual(result.stderr.length, 0, 'File format is not checked.');
       }
     )
     it(
@@ -45,7 +45,7 @@ describe(
             `foobar/hogehoge.json`
           ]
         );
-        powAssert.notEqual(result.stderr.length, 0, `Output error isn't checked.`);
+        assert.notEqual(result.stderr.length, 0, `Output error isn't checked.`);
       }
     )
   }
@@ -53,12 +53,12 @@ describe(
 
 describe(
   'cli Cty2JSON output test',
-  function() {
-    let tmpFile:tmp.SynchrounousResult;
+  function () {
+    let tmpFile: tmp.SynchrounousResult;
     before(
       function () {
         tmpFile = tmp.fileSync({
-          prefix : `cty2json-${new Date().getTime()}`,
+          prefix: `cty2json-${new Date().getTime()}`,
         })
       }
     );
@@ -74,7 +74,7 @@ describe(
           ]
         );
         const cityData = <Cty2JSONFileFormat>JSON.parse(result.stdout);
-        powAssert.deepEqual(cityData.miscData.budget , 10560, 'Output is not correctly.');
+        assert.deepEqual(cityData.miscData.budget, 10560, 'Output is not correctly.');
       }
     )
     it(
@@ -91,7 +91,7 @@ describe(
         );
         const json = fs.readFileSync(`${tmpFile.name}`, 'utf8');
         const cityData = <Cty2JSONFileFormat>JSON.parse(json);
-        powAssert.deepEqual(cityData.miscData.budget , 10560, 'File is not created correctly.');
+        assert.deepEqual(cityData.miscData.budget, 10560, 'File is not created correctly.');
       }
     )
 

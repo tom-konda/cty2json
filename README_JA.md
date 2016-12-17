@@ -68,7 +68,7 @@ self.addEventListener(
 #### Node.js
 
 ```js:node.js
-require('../../dist/cty2json');
+const Cty2JSON = require('../../cty2json');
 
 let file = fs.readFileSync(`PATH_TO_CTYFILE/test.cty`);
 

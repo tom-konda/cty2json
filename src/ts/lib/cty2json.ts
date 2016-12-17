@@ -6,22 +6,20 @@
 */
 'use strict';
 
-(function(global) {
-  'use strict';
-  const isNode = ('process' in global);
+const cty2JSONStatic = (() => {
 
-  const Cty2JSONAnalyzeData = function(data: ArrayBuffer): string {
+  const Cty2JSONAnalyzeData = function (data: ArrayBuffer): string {
     const SHORT_BYTE_LENGTH = 2,
-          DEFAULT_WIDTH = 120,
-          DEFAULT_HEIGHT = 100,
-          SOME_EDITION_FILESIZE = 27120;
+      DEFAULT_WIDTH = 120,
+      DEFAULT_HEIGHT = 100,
+      SOME_EDITION_FILESIZE = 27120;
     let offset = 0;
 
-    let cityData:cty2JSONDataFormat = {
+    const cityData: cty2JSONDataFormat = {
       fileSize: 0,
       historyData: {},
       miscData: {},
-      tileData: [],
+      tileData: new Array(DEFAULT_HEIGHT),
     };
 
     if (data.byteLength > SOME_EDITION_FILESIZE) {
@@ -39,7 +37,7 @@
     const HISTORY_DATA_COUNT = 240,
       HISTORY_DATA_BYTE = HISTORY_DATA_COUNT * SHORT_BYTE_LENGTH;
     // Get history graph datas from city
-    const getHistoryData = function(property:string) {
+    const getHistoryData = function (property: string) {
       const historyData = data.slice(offset, offset + HISTORY_DATA_BYTE);
       cityData.historyData[property] = [];
       for (let i = 0; i < HISTORY_DATA_COUNT; ++i) {
@@ -107,25 +105,21 @@
       for (let x = 0; x < DEFAULT_WIDTH; ++x) {
         let tile = new DataView(tileData, (x * DEFAULT_HEIGHT + y) * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false);
         cityData.tileData[y][x] = {
-          building : tile & 1023,
-          zoneCenter : tile >> 10 & 1,
-          animated : tile >> 11 & 1,
-          bulldozable : tile >> 12 & 1,
-          combustible : tile >> 13 & 1,
-          conductive : tile >> 14 & 1,
+          building: tile & 1023,
+          zoneCenter: tile >> 10 & 1,
+          animated: tile >> 11 & 1,
+          bulldozable: tile >> 12 & 1,
+          combustible: tile >> 13 & 1,
+          conductive: tile >> 14 & 1,
         };
       }
     }
     return JSON.stringify(cityData, null, 2);
   }
 
-  let _Cty2JSON: Cty2JSONStatic = {
+  return {
     analyzeData: Cty2JSONAnalyzeData,
   }
+})();
 
-  if (isNode) {
-    module.exports = _Cty2JSON;
-  }
-  global.Cty2JSON = _Cty2JSON;
-
-})((this || 0).self || global);
+export default cty2JSONStatic;

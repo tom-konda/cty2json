@@ -1,5 +1,5 @@
 /*!
-* Cty2JSON ver 0.4.2
+* Cty2JSON ver 0.5.0
 * Copyright (C) 2016 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html

@@ -1,18 +1,19 @@
 #!/usr/bin/env node
 /*!
-* Cty2JSON ver 0.4.2
+* Cty2JSON ver 0.5.0
 * Copyright (C) 2016 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html
 */
-require('../lib/cty2json.js');
+const Cty2JSON = <Cty2JSONStatic>require('../index');
 import commander = require('commander');
+const packageInfo = require('../package.json');
 import fs = require('fs');
 
-const fileAccessCheck = (inputFile:string) => {
+const fileAccessCheck = (inputFile: string) => {
   return new Promise(
     (resolve, reject) => {
-      let isfileReadable:number;
+      let isfileReadable: number;
       if (typeof fs.constants === 'undefined') {
         // for Node 4.x
         isfileReadable = fs.R_OK;
@@ -31,7 +32,7 @@ const fileAccessCheck = (inputFile:string) => {
   );
 }
 
-const fileFormatCheck = (inputfile:string) => {
+const fileFormatCheck = (inputfile: string) => {
   return new Promise(
     (resolve, reject) => {
       const file = fs.readFileSync(inputfile);
@@ -48,7 +49,7 @@ const fileFormatCheck = (inputfile:string) => {
   );
 }
 
-const outputJSON = (jsonObj:any, options:any) => {
+const outputJSON = (jsonObj: any, options: any) => {
   return new Promise(
     (resolve, reject) => {
       const JSONtext = JSON.stringify(jsonObj, null, '  ');
@@ -70,36 +71,36 @@ const outputJSON = (jsonObj:any, options:any) => {
   )
 }
 
-const convertCty2JSON = function (inputCTYFile:string, options:any) {
+const convertCty2JSON = function (inputCTYFile: string, options: any) {
   fileAccessCheck(inputCTYFile)
     .then(
-      fileFormatCheck,
-      (error) => {
-        console.error('Cannot Read File.');
-        process.stderr.write(`${error.errno} : ${error.message}\n`);
-        process.exit(error.errno);
-      }
+    fileFormatCheck,
+    (error) => {
+      console.error('Cannot Read File.');
+      process.stderr.write(`${error.errno} : ${error.message}\n`);
+      process.exit(error.errno);
+    }
     ).then(
-      (json) => outputJSON(json, options),
-      (error:SyntaxError) => {
-        console.error('This is wrong Micropolis cty file.');
-        console.error(error);
-        process.stderr.write(`${error.name} : ${error.message}\n`);
-        process.exit(1);
-      }
+    (json) => outputJSON(json, options),
+    (error: SyntaxError) => {
+      console.error('This is wrong Micropolis cty file.');
+      console.error(error);
+      process.stderr.write(`${error.name} : ${error.message}\n`);
+      process.exit(1);
+    }
     ).then(
-      (outputFile) => {
-        outputFile ? process.stdout.write(`${outputFile} was created successfully.`) : null;
-      },
-      (error) => {
-        console.error('Cannot write a JSON file.');
-        process.stderr.write(`${error.errno} : ${error.message}\n`);
-        process.exit(error.errno);
-      }
+    (outputFile) => {
+      outputFile ? process.stdout.write(`${outputFile} was created successfully.`) : null;
+    },
+    (error) => {
+      console.error('Cannot write a JSON file.');
+      process.stderr.write(`${error.errno} : ${error.message}\n`);
+      process.exit(error.errno);
+    }
     );
 }
 
-commander.version('0.4.1')
+commander.version(packageInfo.version)
   .command('<inputFile>', 'Path to a Micropolis .cty file')
   .option('-o, --output <outputfile>', 'Output JSON file')
   .description('Output JSON File from a Micropolis cty file')

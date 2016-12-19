@@ -3,49 +3,48 @@
   "bin": {
     "cty2json": "bin/cli.js"
   },
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "This JavaScript library converts from .cty file ( Micropolis format ) to JSON.",
   "main": "index.js",
   "scripts": {
     "prebuild": "npm run clean",
-    "build": "node -e \"require('shelljs').exec('npm-run-all --parallel ts:build-* --serial move:temp clean:temp test');\"",
+    "build": "npm-run-all --parallel ts:build-* --serial rollup:* test",
     "postbuild": "npm run doc-gen",
-    "clean": "node -e \"require('shelljs').rm('-R', ['./temp', './bin/**','./lib/**.js', './doc', './index.js']);\"",
-    "clean:temp": "node -e \"require('shelljs').rm('-R', ['temp']);\"",
-    "move:temp": "node -e \"require('shelljs').mv('temp/index.js', './')\"",
-    "ts:build-bin": "node -e \"require('shelljs').exec('tsc -p ./src/ts/bin');\"",
-    "ts:build-index": "node -e \"require('shelljs').exec('tsc -p ./src/ts/index');\"",
-    "ts:build-es6": "node -e \"require('shelljs').exec('tsc -p ./src/ts/lib');\"",
-    "ts:build-es5": "node -e \"require('shelljs').exec('tsc -p ./src/ts/lib/tsconfig.es5.json');\"",
-    "doc-gen-org": "node -e \"require('shelljs').exec('typedoc --readme ./README.md --target ES6  --out ./doc ./src/ts/lib/custom_typings/tsd.d.ts')\"",
-    "doc-gen": "node -e \"require('shelljs').exec('typedoc --readme ./README.md --target ES6 --includeDeclarations --out ./doc src/ts/lib/custom_typings/cty2json/cty2json.d.ts')\"",
-    "test": "node -e \"require('shelljs').exec('mocha --require ./src/test/espower-typescript-loader src/test/**.ts')\""
+    "clean": "node -e \"require('shelljs').rm('-R', ['./bin','./lib', './doc', './index.js']);\"",
+    "ts:build-bin": "tsc -p ./src/ts/bin",
+    "ts:build-es6": "tsc -p ./src/ts/lib",
+    "rollup:node": "rollup -c",
+    "rollup:legacy-browser": "rollup -c rollup.legacy.config.js",
+    "doc-gen": "typedoc --name Cty2JSON --readme ./README.md --target es2015 --module es2015 --includeDeclarations --out ./doc src/ts/declaration/index.d.ts",
+    "test": "mocha --compilers ts:espower-typescript/guess src/test/**.ts"
   },
   "author": "tom-konda",
   "license": "GPL-3.0",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=4.7.0"
   },
   "engine-strict": true,
   "devDependencies": {
     "@types/commander": "^2.3.30",
     "@types/jsdom": "^2.0.29",
     "@types/mocha": "^2.2.32",
-    "@types/node": "^6.0.41",
+    "@types/node": "^6.0.52",
     "@types/power-assert": "^1.4.29",
     "@types/tmp": "0.0.31",
     "empower": "^1.2.1",
-    "espower-typescript": "^5.0.1",
+    "espower-typescript": "^7.0.0",
     "jsdom": "^9.5.0",
     "mocha": "^3.1.0",
-    "npm-run-all": "^3.1.0",
-    "power-assert": "^1.4.1",
-    "shelljs": "^0.7.4",
-    "tmp": "0.0.29",
-    "tslint": "^3.15.1",
-    "tslint-eslint-rules": "^2.0.1",
-    "typedoc": "^0.4.5",
-    "typescript": "^2.0.3"
+    "npm-run-all": "^3.1.2",
+    "power-assert": "^1.4.2",
+    "rollup": "^0.37.0",
+    "rollup-plugin-buble": "^0.15.0",
+    "shelljs": "^0.7.5",
+    "tmp": "0.0.31",
+    "tslint": "^4.0.2",
+    "tslint-eslint-rules": "^2.2.1",
+    "typedoc": "^0.5.1",
+    "typescript": "^2.1.4"
   },
   "dependencies": {
     "commander": "^2.9.0"

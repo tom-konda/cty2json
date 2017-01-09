@@ -5,8 +5,11 @@
         "lib": [
             "es2015"
         ],
+        "typeRoots": [
+            "../declaration"
+        ],
         "types": [
-            "node"
+            "cty2json"
         ],
         "forceConsistentCasingInFileNames": true,
         "noImplicitAny": true,

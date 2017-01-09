@@ -5,9 +5,15 @@
         "lib": [
             "es2015"
         ],
-        "types": [ 
-            "node", "commander" 
-        ], 
+        "typeRoots": [
+            "node_modules/@types",
+            "../declaration"
+        ],
+        "types": [
+            "node",
+            "commander",
+            "cty2json"
+        ],
         "forceConsistentCasingInFileNames": true,
         "noImplicitAny": true,
         "strictNullChecks": true,

@@ -15,7 +15,7 @@
     "ts:build-es6": "tsc -p ./src/ts/lib",
     "rollup:node": "rollup -c",
     "rollup:legacy-browser": "rollup -c rollup.legacy.config.js",
-    "doc-gen": "typedoc --name Cty2JSON --readme ./README.md --target es2015 --module es2015 --includeDeclarations --out ./doc src/ts/declaration/index.d.ts",
+    "doc-gen": "typedoc --name Cty2JSON --readme ./README.md --target es2015 --module es2015 --includeDeclarations --out ./doc src/ts/declaration/cty2json/index.d.ts",
     "test": "mocha --compilers ts:espower-typescript/guess src/test/**.ts"
   },
   "author": "tom-konda",

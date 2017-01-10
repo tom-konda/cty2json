@@ -18,6 +18,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noImplicitUseStrict": false,
+        "strictNullChecks": true,
         "outDir": "../../../lib",
         "rootDir": ".",
         "emitBOM": false,

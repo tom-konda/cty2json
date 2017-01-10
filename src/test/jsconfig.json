@@ -1,9 +1,0 @@
-{
-    "compilerOptions": {
-        "target": "es2015",
-        "module": "commonjs",
-        "emitBOM": false,
-        "newLine": "LF",
-        "sourceMap": false
-    }
-}

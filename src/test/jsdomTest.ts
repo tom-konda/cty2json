@@ -4,7 +4,7 @@ import jsdom = require('jsdom');
 import fs = require('fs');
 const file = fs.readFileSync(`${__dirname}/fixture/cty2jsonTest.cty`);
 const base64 = file.toString('base64');
-import assert = require('power-assert');
+import cityDataCommonTest = require('./cityDataCommonTest');
 const Cty2JSON = <Cty2JSONStatic>require('../../lib/cty2json.cjs');
 
 const doc = jsdom.jsdom(
@@ -28,7 +28,7 @@ xhr.onreadystatechange = function () {
         it(
           'Get City Budget',
           function () {
-            assert.deepEqual(cityData.miscData.budget, 10560, 'File is not analyzed correctly.');
+            cityDataCommonTest.checkCityData(cityData);
           }
         )
       }

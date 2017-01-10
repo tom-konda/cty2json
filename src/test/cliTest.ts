@@ -3,6 +3,7 @@ import assert = require('power-assert');
 import childProc = require('child_process');
 import fs = require('fs');
 import tmp = require('tmp');
+import cityDataCommonTest = require('./cityDataCommonTest');
 
 describe(
   'cli Cty2JSON failure test',
@@ -74,7 +75,7 @@ describe(
           ]
         );
         const cityData = <Cty2JSONFileFormat>JSON.parse(result.stdout);
-        assert.deepEqual(cityData.miscData.budget, 10560, 'Output is not correctly.');
+        cityDataCommonTest.checkCityData(cityData);
       }
     )
     it(

@@ -3,7 +3,7 @@
   "bin": {
     "cty2json": "bin/cli.js"
   },
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "This JavaScript library converts from .cty file ( Micropolis format ) to JSON.",
   "main": "index.js",
   "scripts": {

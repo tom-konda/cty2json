@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /*!
-* Cty2JSON ver 0.5.0
-* Copyright (C) 2016 Tom Konda
+* Cty2JSON ver 0.5.1
+* Copyright (C) 2017 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html
 */
-const Cty2JSON = <Cty2JSONStatic>require('../index');
 import commander = require('commander');
-const packageInfo = require('../package.json');
 import fs = require('fs');
+const Cty2JSON = <Cty2JSONStatic>require('../index');
+const packageInfo = JSON.parse(fs.readFileSync('./package.json').toString());
 
 const fileAccessCheck = (inputFile: string) => {
   return new Promise(

@@ -21,7 +21,7 @@
   "author": "Tom Konda",
   "license": "GPL-3.0",
   "engines": {
-    "node": ">=4.7.0"
+    "node": ">=4.0.0"
   },
   "engine-strict": true,
   "devDependencies": {

@@ -24,6 +24,9 @@
     "node": ">=4.0.0"
   },
   "engine-strict": true,
+  "directories": {
+    "test": "src/test/"
+  },
   "devDependencies": {
     "@types/commander": "^2.3.31",
     "@types/jsdom": "^2.0.29",

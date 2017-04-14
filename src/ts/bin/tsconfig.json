@@ -1,32 +1,21 @@
 {
-    "compilerOptions": {
-        "target": "es2015",
-        "module": "commonjs",
-        "lib": [
-            "es2015"
-        ],
-        "typeRoots": [
-            "node_modules/@types",
-            "../declaration"
-        ],
-        "types": [
-            "node",
-            "commander",
-            "cty2json"
-        ],
-        "forceConsistentCasingInFileNames": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "noFallthroughCasesInSwitch": true,
-        "noImplicitReturns": true,
-        "noImplicitThis": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noImplicitUseStrict": false,
-        "outDir": "../../../bin",
-        "rootDir": ".",
-        "emitBOM": false,
-        "newLine": "LF",
-        "sourceMap": false
-    }
+  "extends": "../base-config/tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": [
+      "es2015"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "../declaration"
+    ],
+    "types": [
+      "node",
+      "commander",
+      "cty2json"
+    ],
+    "outDir": "../../../bin",
+    "rootDir": ".",
+    "sourceMap": false
+  }
 }

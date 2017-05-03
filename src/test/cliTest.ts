@@ -1,5 +1,5 @@
 'use strict';
-import assert = require('power-assert');
+import assert = require('assert');
 import childProc = require('child_process');
 import fs = require('fs');
 import tmp = require('tmp');

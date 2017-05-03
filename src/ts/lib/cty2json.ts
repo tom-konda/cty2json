@@ -117,8 +117,13 @@ const cty2JSONStatic = (() => {
     return JSON.stringify(cityData, null, 2);
   }
 
+  const oldFuncAlias = (data: ArrayBuffer) => {
+    return Cty2JSONAnalyzeData(data)
+  }
+
   return {
-    analyzeData: Cty2JSONAnalyzeData,
+    analyze: Cty2JSONAnalyzeData,
+    analyzeData: oldFuncAlias,
   }
 })();
 

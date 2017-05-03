@@ -16,6 +16,7 @@ interface cty2JSONDataFormat {
 
 interface Cty2JSONStatic {
   analyzeData(data: ArrayBuffer): string;
+  analyze(data: ArrayBuffer): string;
 }
 
 declare const Cty2JSON: Cty2JSONStatic;

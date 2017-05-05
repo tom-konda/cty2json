@@ -13,8 +13,8 @@
     "clean": "node -e \"require('shelljs').rm('-R', ['./bin','./lib', './doc', './index.js']);\"",
     "ts:build-bin": "tsc -p ./src/ts/bin",
     "ts:build-lib": "tsc -p ./src/ts/lib",
-    "rollup:node": "rollup -c",
-    "rollup:legacy-browser": "rollup -c rollup.legacy.config.js",
+    "rollup:node": "rollup -c ./rollup-configs/rollup.config.js",
+    "rollup:legacy-browser": "rollup -c ./rollup-configs/rollup.legacy.config.js",
     "doc-gen": "typedoc --name Cty2JSON --readme ./README.md --target es2015 --module es2015 --includeDeclarations --out ./doc src/ts/declaration/cty2json/index.d.ts",
     "test": "mocha --compilers ts:espower-typescript/guess src/test/**.ts"
   },

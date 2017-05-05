@@ -3,7 +3,7 @@
   "bin": {
     "cty2json": "bin/cli.js"
   },
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "This JavaScript library converts from .cty file ( Micropolis format ) to JSON.",
   "main": "index.js",
   "scripts": {
@@ -28,26 +28,26 @@
     "test": "src/test/"
   },
   "devDependencies": {
-    "@types/commander": "^2.3.31",
-    "@types/jsdom": "^2.0.29",
+    "@types/commander": "^2.9.0",
+    "@types/jsdom": "^2.0.30",
     "@types/mocha": "^2.2.37",
-    "@types/node": "^6.0.59",
+    "@types/node": "^6.0.72",
     "@types/power-assert": "^1.4.29",
     "@types/tmp": "0.0.32",
     "empower": "^1.2.1",
-    "espower-typescript": "^7.0.0",
-    "jsdom": "^9.9.1",
-    "mocha": "^3.2.0",
-    "npm-run-all": "^4.0.0",
+    "espower-typescript": "^8.0.0",
+    "jsdom": "^10.1.0",
+    "mocha": "^3.3.0",
+    "npm-run-all": "^4.0.2",
     "power-assert": "^1.4.2",
-    "rollup": "^0.41.4",
+    "rollup": "^0.41.6",
     "rollup-plugin-buble": "^0.15.0",
-    "shelljs": "^0.7.6",
+    "shelljs": "^0.7.7",
     "tmp": "0.0.31",
-    "tslint": "^4.3.1",
-    "tslint-eslint-rules": "^3.2.3",
-    "typedoc": "^0.5.5",
-    "typescript": "^2.1.5"
+    "tslint": "^5.2.0",
+    "tslint-eslint-rules": "^4.0.0",
+    "typedoc": "^0.5.10",
+    "typescript": "^2.3.2"
   },
   "dependencies": {
     "commander": "^2.9.0"

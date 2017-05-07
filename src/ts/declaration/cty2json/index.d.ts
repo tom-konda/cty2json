@@ -1,15 +1,20 @@
 interface tileInterface {
   building: number,
-  zoneCenter: number,
-  animated: number,
-  bulldozable: number,
-  combustible: number,
-  conductive: number,
+  zoneCenter: boolean,
+  animated: boolean,
+  bulldozable: boolean,
+  combustible: boolean,
+  conductive: boolean,
 }
 
 interface cty2JSONDataFormat {
   fileSize: number,
-  historyData: { [index: string]: number[] },
+  historyData: {
+    [index: string]: {
+      "10years": number[],
+      "120years": number[],
+    }
+  },
   miscData: { [index: string]: number },
   tileData: tileInterface[][],
 }
@@ -21,25 +26,33 @@ interface Cty2JSONStatic {
 
 declare const Cty2JSON: Cty2JSONStatic;
 
-interface tileOutputFormat {
-  building: number,
-  zoneCenter: 0 | 1,
-  animated: 0 | 1,
-  bulldozable: 0 | 1,
-  combustible: 0 | 1,
-  conductive: 0 | 1,
-}
-
-
-interface Cty2JSONFileFormat {
+interface Cty2JSONFileDetailFormat {
   fileSize: number
   historyData: {
-    res: number[],
-    com: number[],
-    ind: number[],
-    cri: number[],
-    pol: number[],
-    val: number[],
+    res: {
+      "10years": number[],
+      "120years": number[],
+    },
+    com: {
+      "10years": number[],
+      "120years": number[],
+    },
+    ind: {
+      "10years": number[],
+      "120years": number[],
+    },
+    cri: {
+      "10years": number[],
+      "120years": number[],
+    },
+    pol: {
+      "10years": number[],
+      "120years": number[],
+    },
+    val: {
+      "10years": number[],
+      "120years": number[],
+    },
   },
   miscData: {
     RPopulation: number,
@@ -72,11 +85,11 @@ interface Cty2JSONFileFormat {
     [
       {
         building: number,
-        zoneCenter: number,
-        animated: number,
-        bulldozable: number,
-        combustible: number,
-        conductive: number,
+        zoneCenter: boolean,
+        animated: boolean,
+        bulldozable: boolean,
+        combustible: boolean,
+        conductive: boolean,
       }
     ]
   ]

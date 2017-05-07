@@ -22,14 +22,14 @@ const xhr = new win.XMLHttpRequest();
 xhr.onreadystatechange = function () {
   if (xhr.readyState === 4) {
     const json = Cty2JSON.analyze(xhr.response);
-    const cityData = <Cty2JSONFileFormat>JSON.parse(json);
+    const cityData = <cty2JSONDataFormat>JSON.parse(json);
     describe(
-      'jsDOM Cty2JSON',
+      'JSDOM Cty2JSON',
       function () {
         it(
           'Get City Budget',
           function () {
-            cityDataCommonTest.checkCityData(cityData);
+            cityDataCommonTest.checkMiscData(cityData);
           }
         )
       }

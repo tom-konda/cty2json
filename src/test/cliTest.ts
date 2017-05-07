@@ -74,8 +74,9 @@ describe(
             `${__dirname}/fixture/cty2jsonTest.cty`,
           ]
         );
-        const cityData = <Cty2JSONFileFormat>JSON.parse(result.stdout);
-        cityDataCommonTest.checkCityData(cityData);
+        const cityData = <cty2JSONDataFormat>JSON.parse(result.stdout);
+        cityDataCommonTest.checkMiscData(cityData);
+        cityDataCommonTest.checkTileData(cityData);
       }
     )
     it(
@@ -91,8 +92,9 @@ describe(
           ]
         );
         const json = fs.readFileSync(`${tmpFile.name}`, 'utf8');
-        const cityData = <Cty2JSONFileFormat>JSON.parse(json);
-        assert.deepEqual(cityData.miscData.budget, 10560, 'File is not created correctly.');
+        const cityData = <cty2JSONDataFormat>JSON.parse(json);
+        cityDataCommonTest.checkHistoryData(cityData, 'File is not created correctly.');
+        cityDataCommonTest.checkMiscData(cityData, 'File is not created correctly.');
       }
     )
 

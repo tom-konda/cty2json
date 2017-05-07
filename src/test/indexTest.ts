@@ -7,23 +7,35 @@ import fs = require('fs');
 describe(
   'index.js Cty2JSON',
   function () {
+    const file = fs.readFileSync(`${__dirname}/fixture/cty2jsonTest.cty`);
+    const json = Cty2JSON.analyzeData(new Uint8Array(file).buffer);
+    const cityData = <cty2JSONDataFormat>JSON.parse(json);
+
     it(
       'Alias Test',
       function () {
-        const file = fs.readFileSync(`${__dirname}/fixture/cty2jsonTest.cty`);
-        const json = Cty2JSON.analyzeData(new Uint8Array(file).buffer);
-        const cityData = <Cty2JSONFileFormat>JSON.parse(json);
-        cityDataCommonTest.checkCityData(cityData);
+        cityDataCommonTest.checkMiscData(cityData);
+      }
+    )
+
+    it(
+      'Check History Data Order',
+      function () {
+        cityDataCommonTest.checkHistoryData(cityData);
       }
     )
 
     it(
       'Get City Budget',
       function () {
-        const file = fs.readFileSync(`${__dirname}/fixture/cty2jsonTest.cty`);
-        const json = Cty2JSON.analyze(new Uint8Array(file).buffer);
-        const cityData = <Cty2JSONFileFormat>JSON.parse(json);
-        cityDataCommonTest.checkCityData(cityData);
+        cityDataCommonTest.checkMiscData(cityData);
+      }
+    )
+
+    it(
+      'Check tile data',
+      function () {
+        cityDataCommonTest.checkTileData(cityData);
       }
     )
   }

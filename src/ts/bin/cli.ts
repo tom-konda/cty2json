@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*!
-* Cty2JSON ver 0.5.2
+* Cty2JSON ver 0.6.0
 * Copyright (C) 2017 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -90,7 +90,7 @@ const convertCty2JSON = function (inputCTYFile: string, options: any) {
     }
     ).then(
     (outputFile) => {
-      outputFile ? process.stdout.write(`${outputFile} was created successfully.`) : null;
+      outputFile ? process.stdout.write(`${outputFile} was created successfully.\n`) : null;
     },
     (error) => {
       console.error('Cannot write a JSON file.');

@@ -55,9 +55,9 @@ const cty2JSONStatic = (() => {
       offset += HISTORY_DATA_BYTE;
     };
 
-    getHistoryData('res');
-    getHistoryData('com');
-    getHistoryData('ind');
+    getHistoryData('residential');
+    getHistoryData('commericial');
+    getHistoryData('industrial');
     getHistoryData('crime');
     getHistoryData('pollution');
     getHistoryData('landValue');

@@ -15,7 +15,7 @@
     "ts:build-lib": "tsc -p ./src/ts/lib",
     "rollup:node": "rollup -c ./rollup-configs/rollup.config.js",
     "rollup:legacy-browser": "rollup -c ./rollup-configs/rollup.legacy.config.js",
-    "doc-gen": "typedoc --name Cty2JSON --readme ./README.md --target es2015 --module es2015 --includeDeclarations --out ./doc src/ts/declaration/cty2json/index.d.ts",
+    "doc-gen": "typedoc --name Cty2JSON --readme ./README.md --excludeExternals --target es2015 --module es2015 --includeDeclarations --out ./doc src/ts/declaration/cty2json/index.d.ts",
     "test": "mocha --compilers ts:espower-typescript/guess src/test/**.ts"
   },
   "author": "Tom Konda",
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/commander": "^2.9.0",
     "@types/jsdom": "^2.0.30",
-    "@types/mocha": "^2.2.37",
+    "@types/mocha": "^2.2.41",
     "@types/node": "^6.0.72",
     "@types/power-assert": "^1.4.29",
     "@types/tmp": "0.0.32",
@@ -46,7 +46,7 @@
     "tmp": "0.0.31",
     "tslint": "^5.2.0",
     "tslint-eslint-rules": "^4.0.0",
-    "typedoc": "^0.5.10",
+    "typedoc": "^0.6.0",
     "typescript": "^2.3.2"
   },
   "dependencies": {

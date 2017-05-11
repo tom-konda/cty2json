@@ -107,24 +107,54 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
 {
   fileSize : Integer,
   historyData : {
-    com : [
-      0-255, // 240 times
-    ],
-    cri : [
-      0-255, // 240 times
-    ],
-    ind : [
-      0-255, // 240 times
-    ],
-    pol : [
-      0-255, // 240 times
-    ],
-    res : [
-      0-255, // 240 times
-    ],
-    val : [
-      0-255, // 240 times
-    ],
+    residential: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    commericial: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    industrial: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    crime: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    pollution: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    landValue: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
   },
   miscData : {
     CPopulation : Integer,
@@ -156,12 +186,12 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
   tileDatas : [
     [
       {
-        animated : 0 or 1,
         building : 0-1023,
-        bulldozable : 0 or 1,
-        combustible : 0 or 1,
-        conductive : 0 or 1,
-        zoneCenter : 0 or 1
+        animated : Boolean,
+        bulldozable : Boolean,
+        combustible : Boolean,
+        conductive : Boolean,
+        zoneCenter : Boolean,
       }, {
       }, // 120 times
     ], [

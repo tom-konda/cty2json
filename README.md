@@ -22,14 +22,14 @@ Options
 ```
 
 ### Library
-#### Browser
+#### Browser (Legacy Style)
 
 ```html:browser.html
 <!DOCTYPE html>
 <html>
   <head>
     <title>Demo</title>
-    <script src="../../dist/cty2json.js"></script>
+    <script src="../../lib/cty2json.js"></script>
     <script>
       'use strict';
       let xhr = new win.XMLHttpRequest();
@@ -49,10 +49,35 @@ Options
 </html>
 ```
 
+#### Browser (ES Modules)
+
+```html:es_modules
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="module" src="test.js"></script>
+  <script type="module">
+    import cty2JSON from '../../lib/cty2json.js';
+    
+    fetch('../src/test/fixture/cty2jsonTest.cty')
+    .then(
+      (result) => {
+        return result.arrayBuffer();
+      }
+    ).then(
+      (buffer) => {
+        const cityData = JSON.parse(cty2JSON.analyze(buffer));
+      }
+    );
+  </script>
+</head>
+</html>
+```
+
 #### Web worker
 
 ```js:worker.js
-importScripts('../../dist/cty2json.js');
+importScripts('../../lib/cty2json.js');
 
 self.addEventListener(
     'message',

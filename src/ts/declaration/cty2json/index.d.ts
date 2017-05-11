@@ -29,27 +29,27 @@ declare const Cty2JSON: Cty2JSONStatic;
 interface Cty2JSONFileDetailFormat {
   fileSize: number
   historyData: {
-    res: {
+    residential: {
       "10years": number[],
       "120years": number[],
     },
-    com: {
+    commericial: {
       "10years": number[],
       "120years": number[],
     },
-    ind: {
+    industrial: {
       "10years": number[],
       "120years": number[],
     },
-    cri: {
+    crime: {
       "10years": number[],
       "120years": number[],
     },
-    pol: {
+    pollution: {
       "10years": number[],
       "120years": number[],
     },
-    val: {
+    landValue: {
       "10years": number[],
       "120years": number[],
     },

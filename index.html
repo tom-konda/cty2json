@@ -1,74 +1,79 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+  <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Cty2JSON by tom-konda</title>
-  </head>
+  <title>Cty2JSON by tom-konda</title>
+</head>
 
-  <body>
-    <div id="container">
-      <div class="inner">
+<body>
+  <div id="container">
+    <div class="inner">
 
-        <header>
-          <h1>Cty2JSON</h1>
-          <h2>This JavaScript library converts from .cty file ( Micropolis format ) to JSON.</h2>
-        </header>
+      <header>
+        <h1>Cty2JSON</h1>
+        <h2>This JavaScript library converts from .cty file ( Micropolis format ) to JSON.</h2>
+      </header>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/tom-konda/cty2json/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/tom-konda/cty2json/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/tom-konda/cty2json" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
+      <section id="downloads" class="clearfix">
+        <a href="https://github.com/tom-konda/cty2json/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+        <a href="https://github.com/tom-konda/cty2json/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+        <a href="https://github.com/tom-konda/cty2json" id="view-on-github" class="button"><span>View on GitHub</span></a>
+      </section>
 
-        <hr>
+      <hr>
 
-        <section id="main_content">
-          <p>Cty2JSON: <a href="https://github.com/tom-konda/cty2json">https://github.com/tom-konda/cty2json</a></p>
+      <section id="main_content">
+        <p>Cty2JSON: <a href="https://github.com/tom-konda/cty2json">https://github.com/tom-konda/cty2json</a></p>
 
-<h2>
-<a id="about" class="anchor" href="#about" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>About</h2>
+        <h2>
+          <a id="about" class="anchor" href="#about" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>About</h2>
 
-<p>This JavaScript library converts from .cty file ( Micropolis format ) to JSON.</p>
+        <p>This JavaScript library converts from .cty file ( Micropolis format ) to JSON.</p>
 
-<h2>
-<a id="support-browsers" class="anchor" href="#support-browsers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support Browsers</h2>
+        <h2>
+          <a id="support-browsers" class="anchor" href="#support-browsers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support
+          Browsers</h2>
 
-<ul>
-<li>Firefox, Chromium</li>
-<li>IE 11, Google Chrome, Opera and Safari maybe works well.</li>
-</ul>
+        <ul>
+          <li>Firefox, Chromium</li>
+          <li>IE 11, Google Chrome, Opera and Safari maybe works well.</li>
+        </ul>
 
-<h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+        <h2>
+          <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
-<h3>
-<a id="cli" class="anchor" href="#library" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CLI</h3>
-<div class="highlight highlight-source-shell"><pre>$ cty2json [options] <span class="pl-k">&lt;</span>inputfile<span class="pl-k">&gt;</span></pre></div>
-<p>Options</p>
-<div class="highlight highlight-source-shell">
-  <pre>    -h, --help                 output usage information
+        <h3>
+          <a id="cli" class="anchor" href="#library" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CLI</h3>
+        <div class="highlight highlight-source-shell">
+          <pre>$ cty2json [options] <span class="pl-k">&lt;</span>inputfile<span class="pl-k">&gt;</span></pre>
+        </div>
+        <p>Options</p>
+        <div class="highlight highlight-source-shell">
+          <pre>    -h, --help                 output usage information
     -V, --version              output the version number
     -o, --output <span class="pl-k">&lt;</span>outputfile<span class="pl-k">&gt;</span>  Output JSON file</pre>
-</div>
-<h3>
-<a id="library" class="anchor" href="#library" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Library</h3>
+        </div>
+        <h3>
+          <a id="library" class="anchor" href="#library" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Library</h3>
 
-<h4>
-<a id="browser" class="anchor" href="#browser" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Browser</h4>
+        <h4>
+          <a id="browser-legacy" class="anchor" href="#browser-legacy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Browser
+          (Legacy Style)</h4>
 
-<pre lang="html:browser.html"><code>&lt;!DOCTYPE html&gt;
+        <pre lang="html:browser-legacy.html"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Demo&lt;/title&gt;
-    &lt;script src="../../dist/cty2json.js"&gt;&lt;/script&gt;
+    &lt;script src="../../lib/cty2json.js"&gt;&lt;/script&gt;
     &lt;script&gt;
       'use strict';
       let xhr = new win.XMLHttpRequest();
@@ -88,10 +93,37 @@
 &lt;/html&gt;
 </code></pre>
 
-<h4>
-<a id="web-worker" class="anchor" href="#web-worker" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Web worker</h4>
+        <h4>
+          <a id="browser-esmodules" class="anchor" href="#browser-esmodules" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Browser
+          (Legacy Style)</h4>
 
-<pre lang="js:worker.js"><code>importScripts('../../dist/cty2json.js');
+        <pre lang="html:browser-esmodules.html"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script type="module" src="test.js"&gt;&lt;/script&gt;
+  &lt;script type="module"&gt;
+    import cty2JSON from '../../lib/cty2json.js';
+    
+    fetch('../src/test/fixture/cty2jsonTest.cty')
+    .then(
+      (result) =&gt; {
+        return result.arrayBuffer();
+      }
+    ).then(
+      (buffer) =&gt; {
+        const cityData = JSON.parse(cty2JSON.analyze(buffer));
+      }
+    );
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;/html&gt;
+</code></pre>
+
+        <h4>
+          <a id="web-worker" class="anchor" href="#web-worker" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Web
+          worker</h4>
+
+        <pre lang="js:worker.js"><code>importScripts('../../lib/cty2json.js');
 
 self.addEventListener(
     'message',
@@ -104,10 +136,10 @@ self.addEventListener(
 );
 </code></pre>
 
-<h4>
-<a id="nodejs" class="anchor" href="#nodejs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Node.js</h4>
+        <h4>
+          <a id="nodejs" class="anchor" href="#nodejs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Node.js</h4>
 
-<pre lang="js:node.js"><code>require('../../dist/cty2json');
+        <pre lang="js:node.js"><code>require('../../cty2json');
 
 let file = fs.readFileSync(`PATH_TO_CTYFILE/test.cty`);
 
@@ -116,30 +148,61 @@ let uint8arr = new Uint8Array(file);
 let json = Cty2JSON.analyzeData(uint8arr.buffer);
 </code></pre>
 
-<h2>
-<a id="output-format" class="anchor" href="#output-format" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Output Format</h2>
+        <h2>
+          <a id="output-format" class="anchor" href="#output-format" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Output
+          Format</h2>
 
-<pre><code>{
+        <pre><code>{
   fileSize : Integer,
   historyData : {
-    com : [
-      0-255, // 240 times
-    ],
-    cri : [
-      0-255, // 240 times
-    ],
-    ind : [
-      0-255, // 240 times
-    ],
-    pol : [
-      0-255, // 240 times
-    ],
-    res : [
-      0-255, // 240 times
-    ],
-    val : [
-      0-255, // 240 times
-    ],
+    residential: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    commericial: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    industrial: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    crime: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    pollution: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    landValue: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
   },
   miscData : {
     CPopulation : Integer,
@@ -168,15 +231,15 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
     soundOn : 0 or 1,
     tax : 0-20
   },
-  tileData : [
+  tileDatas : [
     [
       {
-        animated : 0 or 1,
         building : 0-1023,
-        bulldozable : 0 or 1,
-        combustible : 0 or 1,
-        conductive : 0 or 1,
-        zoneCenter : 0 or 1
+        animated : Boolean,
+        bulldozable : Boolean,
+        combustible : Boolean,
+        conductive : Boolean,
+        zoneCenter : Boolean,
       }, {
       }, // 120 times
     ], [
@@ -185,29 +248,31 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
 }
 </code></pre>
 
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+        <h2>
+          <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
 
-<p>Licensed under the GPLv3</p>
-        </section>
+        <p>Licensed under the GPLv3</p>
+      </section>
 
-        <footer>
-          Cty2JSON is maintained by <a href="https://github.com/tom-konda">tom-konda</a><br>
-          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+      <footer>
+        Cty2JSON is maintained by <a href="https://github.com/tom-konda">tom-konda</a><br> This page was generated by
+        <a
+          href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+      </footer>
 
-                  <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
+      <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
             try {
               var pageTracker = _gat._getTracker("UA-12732179-5");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
+              pageTracker._trackPageview();
+            } catch (err) { }
+      </script>
 
-      </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

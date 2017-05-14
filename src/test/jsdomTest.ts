@@ -1,20 +1,19 @@
 'use strict';
 
 import jsdom = require('jsdom');
-const { JSDOM } = jsdom as any;
 import fs = require('fs');
 const file = fs.readFileSync(`${__dirname}/fixture/cty2jsonTest.cty`);
 const base64 = file.toString('base64');
 import cityDataCommonTest = require('./cityDataCommonTest');
 const Cty2JSON = <Cty2JSONStatic>require('../../lib/cty2json.cjs');
 
-const doc = new JSDOM(
+const doc = jsdom.jsdom(
   '<html><head></head><body></body></html>',
   {
   }
 );
 
-const win = doc.window;
+const win = doc.defaultView;
 const dataURLSch = `data:application/octet-binary;base64,${base64}`;
 
 const xhr = new win.XMLHttpRequest();

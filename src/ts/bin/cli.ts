@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*!
-* Cty2JSON ver 0.6.0
+* Cty2JSON ver 0.6.1
 * Copyright (C) 2017 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html

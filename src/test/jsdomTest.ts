@@ -1,34 +1,35 @@
 'use strict';
 
 import jsdom = require('jsdom');
+const { JSDOM } = jsdom as any;
 import fs = require('fs');
 const file = fs.readFileSync(`${__dirname}/fixture/cty2jsonTest.cty`);
 const base64 = file.toString('base64');
-import assert = require('power-assert');
+import cityDataCommonTest = require('./cityDataCommonTest');
 const Cty2JSON = <Cty2JSONStatic>require('../../lib/cty2json.cjs');
 
-const doc = jsdom.jsdom(
+const doc = new JSDOM(
   '<html><head></head><body></body></html>',
   {
   }
 );
 
-const win = doc.defaultView;
+const win = doc.window;
 const dataURLSch = `data:application/octet-binary;base64,${base64}`;
 
 const xhr = new win.XMLHttpRequest();
 
 xhr.onreadystatechange = function () {
   if (xhr.readyState === 4) {
-    const json = Cty2JSON.analyzeData(xhr.response);
-    const cityData = <Cty2JSONFileFormat>JSON.parse(json);
+    const json = Cty2JSON.analyze(xhr.response);
+    const cityData = <cty2JSONDataFormat>JSON.parse(json);
     describe(
-      'jsDOM Cty2JSON',
+      'JSDOM Cty2JSON',
       function () {
         it(
           'Get City Budget',
           function () {
-            assert.deepEqual(cityData.miscData.budget, 10560, 'File is not analyzed correctly.');
+            cityDataCommonTest.checkMiscData(cityData);
           }
         )
       }

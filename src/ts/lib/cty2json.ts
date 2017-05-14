@@ -1,6 +1,6 @@
 /*!
-* Cty2JSON ver 0.5.0
-* Copyright (C) 2016 Tom Konda
+* Cty2JSON ver 0.6.0
+* Copyright (C) 2017 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html
 */
@@ -8,7 +8,7 @@
 
 const cty2JSONStatic = (() => {
 
-  const Cty2JSONAnalyzeData = function (data: ArrayBuffer): string {
+  const Cty2JSONAnalyzeData = (data: ArrayBuffer) => {
     const SHORT_BYTE_LENGTH = 2,
       DEFAULT_WIDTH = 120,
       DEFAULT_HEIGHT = 100,
@@ -35,26 +35,35 @@ const cty2JSONStatic = (() => {
 
     cityData.fileSize = data.byteLength;
     const HISTORY_DATA_COUNT = 240,
+      HALF_HISTORY_DATA_COUNT = HISTORY_DATA_COUNT / 2,
       HISTORY_DATA_BYTE = HISTORY_DATA_COUNT * SHORT_BYTE_LENGTH;
     // Get history graph datas from city
     const getHistoryData = function (property: string) {
       const historyData = data.slice(offset, offset + HISTORY_DATA_BYTE);
-      cityData.historyData[property] = [];
+      cityData.historyData[property] = {
+        '10years': [],
+        '120years': [],
+      };
       for (let i = 0; i < HISTORY_DATA_COUNT; ++i) {
-        cityData.historyData[property].push(new DataView(historyData, i * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false));
+        if (i < HALF_HISTORY_DATA_COUNT) {
+          cityData.historyData[property]['10years'].unshift(new DataView(historyData, i * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false));
+        }
+        else {
+          cityData.historyData[property]['120years'].unshift(new DataView(historyData, i * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false));
+        }
       }
       offset += HISTORY_DATA_BYTE;
     };
 
-    getHistoryData('res');
-    getHistoryData('com');
-    getHistoryData('ind');
-    getHistoryData('cri');
-    getHistoryData('pol');
-    getHistoryData('val');
+    getHistoryData('residential');
+    getHistoryData('commericial');
+    getHistoryData('industrial');
+    getHistoryData('crime');
+    getHistoryData('pollution');
+    getHistoryData('landValue');
     const MISC_DATA_COUNT = 120,
       MISC_DATA_BYTE = MISC_DATA_COUNT * SHORT_BYTE_LENGTH;
-    let miscData = data.slice(offset, offset + MISC_DATA_BYTE);
+    const miscData = data.slice(offset, offset + MISC_DATA_BYTE);
     offset += MISC_DATA_BYTE;
 
     const getMiscData = (property: string, miscOffset: number, length: number) => {
@@ -103,22 +112,27 @@ const cty2JSONStatic = (() => {
     for (let y = 0; y < DEFAULT_HEIGHT; ++y) {
       cityData.tileData[y] = [];
       for (let x = 0; x < DEFAULT_WIDTH; ++x) {
-        let tile = new DataView(tileData, (x * DEFAULT_HEIGHT + y) * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false);
+        const tile = new DataView(tileData, (x * DEFAULT_HEIGHT + y) * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false);
         cityData.tileData[y][x] = {
           building: tile & 1023,
-          zoneCenter: tile >> 10 & 1,
-          animated: tile >> 11 & 1,
-          bulldozable: tile >> 12 & 1,
-          combustible: tile >> 13 & 1,
-          conductive: tile >> 14 & 1,
+          zoneCenter: Boolean(tile >> 10 & 1),
+          animated: Boolean(tile >> 11 & 1),
+          bulldozable: Boolean(tile >> 12 & 1),
+          combustible: Boolean(tile >> 13 & 1),
+          conductive: Boolean(tile >> 14 & 1),
         };
       }
     }
     return JSON.stringify(cityData, null, 2);
   }
 
+  const oldFuncAlias = (data: ArrayBuffer) => {
+    return Cty2JSONAnalyzeData(data)
+  }
+
   return {
-    analyzeData: Cty2JSONAnalyzeData,
+    analyze: Cty2JSONAnalyzeData,
+    analyzeData: oldFuncAlias,
   }
 })();
 

@@ -22,14 +22,14 @@ $ cty2json [options] <inputfile>
 ```
 
 ### ライブラリ
-#### ブラウザ
+#### ブラウザ (従来からのスタイル)
 
 ```html:browser.html
 <!DOCTYPE html>
 <html>
   <head>
     <title>Demo</title>
-    <script src="../../dist/cty2json.js"></script>
+    <script src="../../lib/cty2json.legacy.js"></script>
     <script>
       'use strict';
       let xhr = new win.XMLHttpRequest();
@@ -49,10 +49,35 @@ $ cty2json [options] <inputfile>
 </html>
 ```
 
+#### ブラウザ (ES Modules)
+
+```html:es_modules
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="module" src="test.js"></script>
+  <script type="module">
+    import cty2JSON from '../../lib/cty2json.js';
+    
+    fetch('../src/test/fixture/cty2jsonTest.cty')
+    .then(
+      (result) => {
+        return result.arrayBuffer();
+      }
+    ).then(
+      (buffer) => {
+        const cityData = JSON.parse(cty2JSON.analyze(buffer));
+      }
+    );
+  </script>
+</head>
+</html>
+```
+
 #### Web worker
 
 ```js:worker.js
-importScripts('../../dist/cty2json.js');
+importScripts('../../lib/cty2json.js');
 
 self.addEventListener(
     'message',
@@ -82,24 +107,54 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
 {
   fileSize : Integer,
   historyData : {
-    com : [
-      0-255, // 240 times
-    ],
-    cri : [
-      0-255, // 240 times
-    ],
-    ind : [
-      0-255, // 240 times
-    ],
-    pol : [
-      0-255, // 240 times
-    ],
-    res : [
-      0-255, // 240 times
-    ],
-    val : [
-      0-255, // 240 times
-    ],
+    residential: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    commericial: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    industrial: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    crime: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    pollution: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
+    landValue: {
+      "10years": [
+        0-255, // 120 times
+      ],
+      "120years": [
+        0-255, // 120 times
+      ],
+    },
   },
   miscData : {
     CPopulation : Integer,
@@ -131,12 +186,12 @@ let json = Cty2JSON.analyzeData(uint8arr.buffer);
   tileData : [
     [
       {
-        animated : 0 or 1,
         building : 0-1023,
-        bulldozable : 0 or 1,
-        combustible : 0 or 1,
-        conductive : 0 or 1,
-        zoneCenter : 0 or 1
+        animated : Boolean,
+        bulldozable : Boolean,
+        combustible : Boolean,
+        conductive : Boolean,
+        zoneCenter : Boolean,
       }, {
       }, // 120 times
     ], [

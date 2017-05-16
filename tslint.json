@@ -11,12 +11,6 @@
     "no-consecutive-blank-lines": [],
     "no-constant-condition": true,
     "no-trailing-whitespace": true,
-    "no-unreachable": true,
-    "no-unused-variable": true,
-    "use-strict": [
-      true,
-      "check-function"
-    ],
     "quotemark": [
       true,
       "single",

@@ -36,7 +36,7 @@ $ cty2json [options] <inputfile>
 
       xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
-          let json = Cty2JSON.analyzeData(xhr.response);
+          let json = Cty2JSON.analyze(xhr.response);
           let cityData = JSON.parse(json);
         }
       }
@@ -51,7 +51,7 @@ $ cty2json [options] <inputfile>
 
 #### ブラウザ (ES Modules)
 
-```html:es_modules
+```html:es_modules.html
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +83,7 @@ self.addEventListener(
     'message',
     function(event){
         let cityData = event.data;
-        self.postMessage(self.Cty2JSON.analyzeData(cityData));
+        self.postMessage(self.Cty2JSON.analyze(cityData));
         self.close();
     },
     false
@@ -99,7 +99,7 @@ let file = fs.readFileSync(`PATH_TO_CTYFILE/test.cty`);
 
 // Convert from buffer to Uint8Array
 let uint8arr = new Uint8Array(file);
-let json = Cty2JSON.analyzeData(uint8arr.buffer);
+let json = Cty2JSON.analyze(uint8arr.buffer);
 ```
 
 ## 出力フォーマット

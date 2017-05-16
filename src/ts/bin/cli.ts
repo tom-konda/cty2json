@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*!
-* Cty2JSON ver 0.6.1
+* Cty2JSON ver 0.9.0
 * Copyright (C) 2017 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -37,7 +37,7 @@ const fileFormatCheck = (inputfile: string) => {
     (resolve, reject) => {
       const file = fs.readFileSync(inputfile);
       const uint8arr = new Uint8Array(file);
-      let json = Cty2JSON.analyzeData(uint8arr.buffer);
+      let json = Cty2JSON.analyze(uint8arr.buffer);
       try {
         const ctyJSON = JSON.parse(json);
         resolve(ctyJSON);

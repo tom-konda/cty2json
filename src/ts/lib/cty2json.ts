@@ -1,5 +1,5 @@
 /*!
-* Cty2JSON ver 0.6.1
+* Cty2JSON ver 0.9.0
 * Copyright (C) 2017 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -126,13 +126,8 @@ const cty2JSONStatic = (() => {
     return JSON.stringify(cityData, null, 2);
   }
 
-  const oldFuncAlias = (data: ArrayBuffer) => {
-    return Cty2JSONAnalyzeData(data)
-  }
-
   return {
     analyze: Cty2JSONAnalyzeData,
-    analyzeData: oldFuncAlias,
   }
 })();
 

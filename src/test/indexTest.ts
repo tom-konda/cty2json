@@ -8,15 +8,8 @@ describe(
   'index.js Cty2JSON',
   function () {
     const file = fs.readFileSync(`${__dirname}/fixture/cty2jsonTest.cty`);
-    const json = Cty2JSON.analyzeData(new Uint8Array(file).buffer);
+    const json = Cty2JSON.analyze(new Uint8Array(file).buffer);
     const cityData = <cty2JSONDataFormat>JSON.parse(json);
-
-    it(
-      'Alias Test',
-      function () {
-        cityDataCommonTest.checkMiscData(cityData);
-      }
-    )
 
     it(
       'Check History Data Order',

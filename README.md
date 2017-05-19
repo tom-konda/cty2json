@@ -1,5 +1,7 @@
 Cty2JSON: https://github.com/tom-konda/cty2json
 
+[![Build Status](https://travis-ci.org/tom-konda/cty2json.svg?branch=master)](https://travis-ci.org/tom-konda/cty2json)
+
 ## About
 This JavaScript library converts from .cty file ( Micropolis format ) to JSON.
 

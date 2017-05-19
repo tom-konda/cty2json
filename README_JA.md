@@ -1,5 +1,7 @@
 Cty2JSON: https://github.com/tom-konda/cty2json
 
+[![Build Status](https://travis-ci.org/tom-konda/cty2json.svg?branch=master)](https://travis-ci.org/tom-konda/cty2json)
+
 ## これは何？
 Micropolisのcty形式のファイルをJavaScriptを使用して、JSONに変換します。
 

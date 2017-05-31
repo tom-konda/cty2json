@@ -24,6 +24,9 @@ interface Cty2JSONStatic {
 }
 
 declare const Cty2JSON: Cty2JSONStatic;
+declare module "cty2json" {
+    export = Cty2JSON;
+}
 
 interface Cty2JSONFileDetailFormat {
   fileSize: number

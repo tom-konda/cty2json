@@ -35,7 +35,7 @@ interface Cty2JSONFileDetailFormat {
       "10years": number[],
       "120years": number[],
     },
-    commericial: {
+    commercial: {
       "10years": number[],
       "120years": number[],
     },

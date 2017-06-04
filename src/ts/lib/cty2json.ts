@@ -1,5 +1,5 @@
 /*!
-* Cty2JSON ver 0.9.1
+* Cty2JSON ver 0.10.0
 * Copyright (C) 2017 Tom Konda
 * Released under the GPLv3 license
 * See https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -56,7 +56,7 @@ const cty2JSONStatic = (() => {
     };
 
     getHistoryData('residential');
-    getHistoryData('commericial');
+    getHistoryData('commercial');
     getHistoryData('industrial');
     getHistoryData('crime');
     getHistoryData('pollution');

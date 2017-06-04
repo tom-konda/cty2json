@@ -3,7 +3,7 @@ Cty2JSON: https://github.com/tom-konda/cty2json
 [![Build Status](https://travis-ci.org/tom-konda/cty2json.svg?branch=master)](https://travis-ci.org/tom-konda/cty2json)
 
 ## About
-This JavaScript library converts from .cty file ( Micropolis format ) to JSON.
+This JavaScript library converts from .cty file (Micropolis format) to JSON.
 
 ## Support Browsers
 * Firefox, Chromium
@@ -12,7 +12,7 @@ This JavaScript library converts from .cty file ( Micropolis format ) to JSON.
 ## Usage
 ### CLI
 ```bash
-$ cty2json [options] <inputfile>
+$ cty2json [options] <inputFile>
 ```
 
 Options
@@ -20,7 +20,7 @@ Options
 ```bash
     -h, --help                 output usage information
     -V, --version              output the version number
-    -o, --output <outputfile>  Output JSON file
+    -o, --output <outputFile>  Output JSON file
 ```
 
 ### Library
@@ -117,7 +117,7 @@ let json = Cty2JSON.analyze(uint8arr.buffer);
         0-255, // 120 times
       ],
     },
-    commericial: {
+    commercial: {
       "10years": [
         0-255, // 120 times
       ],

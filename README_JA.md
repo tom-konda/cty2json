@@ -12,7 +12,7 @@ Micropolisのcty形式のファイルをJavaScriptを使用して、JSONに変�
 ## 使い方
 ### CLI
 ```bash
-$ cty2json [options] <inputfile>
+$ cty2json [options] <inputFile>
 ```
 
 オプション
@@ -20,7 +20,7 @@ $ cty2json [options] <inputfile>
 ```bash
     -h, --help                 ヘルプの出力
     -V, --version              バージョンの出力
-    -o, --output <outputfile>  JSONファイルの出力
+    -o, --output <outputFile>  JSONファイルの出力
 ```
 
 ### ライブラリ
@@ -117,7 +117,7 @@ let json = Cty2JSON.analyze(uint8arr.buffer);
         0-255, // 120 times
       ],
     },
-    commericial: {
+    commercial: {
       "10years": [
         0-255, // 120 times
       ],

@@ -7,8 +7,13 @@
     "type": "git",
     "url": "https://github.com/tom-konda/cty2json.git"
   },
+  "keywords": [
+    "micropolis",
+    "json",
+    "convert"
+  ],
   "types": "./lib/declaration/cty2json/index.d.ts",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "This JavaScript library converts from .cty file (Micropolis format) to JSON.",
   "main": "index.js",
   "scripts": {
@@ -30,7 +35,6 @@
   "engines": {
     "node": ">=4.0.0"
   },
-  "engine-strict": true,
   "directories": {
     "test": "src/test/"
   },

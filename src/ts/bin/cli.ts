@@ -1,10 +1,3 @@
-#!/usr/bin/env node
-/*!
-* Cty2JSON ver 0.10.0
-* Copyright (C) 2017 Tom Konda
-* Released under the GPLv3 license
-* See https://www.gnu.org/licenses/gpl-3.0.en.html
-*/
 import commander = require('commander');
 import fs = require('fs');
 const Cty2JSON = <Cty2JSONStatic>require('../index');

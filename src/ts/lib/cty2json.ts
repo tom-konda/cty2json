@@ -1,9 +1,3 @@
-/*!
-* Cty2JSON ver 0.10.0
-* Copyright (C) 2017 Tom Konda
-* Released under the GPLv3 license
-* See https://www.gnu.org/licenses/gpl-3.0.en.html
-*/
 'use strict';
 
 const cty2JSONStatic = (() => {
@@ -37,7 +31,7 @@ const cty2JSONStatic = (() => {
     const HISTORY_DATA_COUNT = 240,
       HALF_HISTORY_DATA_COUNT = HISTORY_DATA_COUNT / 2,
       HISTORY_DATA_BYTE = HISTORY_DATA_COUNT * SHORT_BYTE_LENGTH;
-    // Get history graph datas from city
+    // Get history graph data from city
     const getHistoryData = function (property: string) {
       const historyData = data.slice(offset, offset + HISTORY_DATA_BYTE);
       cityData.historyData[property] = {

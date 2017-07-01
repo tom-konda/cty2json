@@ -11,8 +11,8 @@ interface cty2JSONDataFormat {
   fileSize: number,
   historyData: {
     [index: string]: {
-      "10years": number[],
-      "120years": number[],
+      '10years': number[],
+      '120years': number[],
     }
   },
   miscData: { [index: string]: number },
@@ -24,36 +24,36 @@ interface Cty2JSONStatic {
 }
 
 declare const Cty2JSON: Cty2JSONStatic;
-declare module "cty2json" {
-    export = Cty2JSON;
+declare module 'cty2json' {
+  export = Cty2JSON;
 }
 
 interface Cty2JSONFileDetailFormat {
   fileSize: number
   historyData: {
     residential: {
-      "10years": number[],
-      "120years": number[],
+      '10years': number[],
+      '120years': number[],
     },
     commercial: {
-      "10years": number[],
-      "120years": number[],
+      '10years': number[],
+      '120years': number[],
     },
     industrial: {
-      "10years": number[],
-      "120years": number[],
+      '10years': number[],
+      '120years': number[],
     },
     crime: {
-      "10years": number[],
-      "120years": number[],
+      '10years': number[],
+      '120years': number[],
     },
     pollution: {
-      "10years": number[],
-      "120years": number[],
+      '10years': number[],
+      '120years': number[],
     },
     landValue: {
-      "10years": number[],
-      "120years": number[],
+      '10years': number[],
+      '120years': number[],
     },
   },
   miscData: {

@@ -13,9 +13,9 @@ const bannerText = `
 
 export default {
   banner: bannerText.trim(),
-  entry: './bin/cli.js',
+  input: './bin/cli.js',
   external: ['fs'],
-  targets: [
-    { dest: 'bin/cli.js', format: 'cjs' },
+  output: [
+    { file: 'bin/cli.js', format: 'cjs' },
   ],
 }

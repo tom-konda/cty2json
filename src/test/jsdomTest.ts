@@ -20,8 +20,7 @@ const xhr = new win.XMLHttpRequest();
 
 xhr.onreadystatechange = function () {
   if (xhr.readyState === 4) {
-    const json = Cty2JSON.analyze(xhr.response);
-    const cityData = <cty2JSONDataFormat>JSON.parse(json);
+    const cityData = Cty2JSON.analyze(xhr.response);
     describe(
       'JSDOM Cty2JSON',
       function () {

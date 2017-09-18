@@ -10,17 +10,15 @@ interface tileInterface {
 interface cty2JSONDataFormat {
   fileSize: number,
   historyData: {
-    [index: string]: {
-      '10years': number[],
-      '120years': number[],
-    }
+    [index: string]: historyGraphData,
   },
   miscData: { [index: string]: number },
   tileData: tileInterface[][],
 }
 
 interface Cty2JSONStatic {
-  analyze(data: ArrayBuffer): string;
+  analyze(data: ArrayBuffer): cty2JSONDataFormat;
+  outputJSONText(data: ArrayBuffer): string;
 }
 
 declare const Cty2JSON: Cty2JSONStatic;
@@ -28,33 +26,20 @@ declare module 'cty2json' {
   export = Cty2JSON;
 }
 
+interface historyGraphData {
+  '10years': number[],
+  '120years': number[],
+}
+
 interface Cty2JSONFileDetailFormat {
   fileSize: number
   historyData: {
-    residential: {
-      '10years': number[],
-      '120years': number[],
-    },
-    commercial: {
-      '10years': number[],
-      '120years': number[],
-    },
-    industrial: {
-      '10years': number[],
-      '120years': number[],
-    },
-    crime: {
-      '10years': number[],
-      '120years': number[],
-    },
-    pollution: {
-      '10years': number[],
-      '120years': number[],
-    },
-    landValue: {
-      '10years': number[],
-      '120years': number[],
-    },
+    residential: historyGraphData,
+    commercial: historyGraphData,
+    industrial: historyGraphData,
+    crime: historyGraphData,
+    pollution: historyGraphData,
+    landValue: historyGraphData,
   },
   miscData: {
     RPopulation: number,

@@ -117,11 +117,15 @@ const cty2JSONStatic = (() => {
         };
       }
     }
-    return JSON.stringify(cityData, null, 2);
+
+    return cityData;
   }
+
+  const outputJSONText = (data: ArrayBuffer) => JSON.stringify(Cty2JSONAnalyzeData(data), null, '  ');
 
   return {
     analyze: Cty2JSONAnalyzeData,
+    outputJSONText: outputJSONText,
   }
 })();
 

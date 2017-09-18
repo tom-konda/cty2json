@@ -30,10 +30,9 @@ const fileFormatCheck = (inputfile: string) => {
     (resolve, reject) => {
       const file = fs.readFileSync(inputfile);
       const uint8arr = new Uint8Array(file);
-      let json = Cty2JSON.analyze(uint8arr.buffer);
       try {
-        const ctyJSON = JSON.parse(json);
-        resolve(ctyJSON);
+        const ctyData = Cty2JSON.outputJSONText(uint8arr.buffer);
+        resolve(ctyData);
       }
       catch (error) {
         reject(error);
@@ -42,10 +41,9 @@ const fileFormatCheck = (inputfile: string) => {
   );
 }
 
-const outputJSON = (jsonObj: any, options: any) => {
+const outputJSON = (JSONtext: string, options: any) => {
   return new Promise(
     (resolve, reject) => {
-      const JSONtext = JSON.stringify(jsonObj, null, '  ');
       const outputFile = options.output;
       if (outputFile) {
         fs.writeFile(
@@ -64,7 +62,7 @@ const outputJSON = (jsonObj: any, options: any) => {
   )
 }
 
-const convertCty2JSON = function (inputCTYFile: string, options: any) {
+const convertCty2JSON = (inputCTYFile: string, options: any) => {
   fileAccessCheck(inputCTYFile)
     .then(
     fileFormatCheck,
@@ -74,7 +72,7 @@ const convertCty2JSON = function (inputCTYFile: string, options: any) {
       process.exit(error.errno);
     }
     ).then(
-    (json) => outputJSON(json, options),
+    (json:string) => outputJSON(json, options),
     (error: SyntaxError) => {
       console.error('This is wrong Micropolis cty file.');
       console.error(error);

@@ -57,18 +57,17 @@ Options
 <!DOCTYPE html>
 <html>
 <head>
-  <script type="module" src="test.js"></script>
   <script type="module">
-    import cty2JSON from '../../lib/cty2json.js';
+    import cty2JSON from './cty2json.js';
     
-    fetch('../src/test/fixture/cty2jsonTest.cty')
+    fetch('./cty2jsonTest.cty')
     .then(
       (result) => {
         return result.arrayBuffer();
       }
     ).then(
       (buffer) => {
-        const cityData = JSON.parse(cty2JSON.analyze(buffer));
+        const cityData = cty2JSON.analyze(buffer);
       }
     );
   </script>
@@ -201,6 +200,13 @@ let json = Cty2JSON.analyze(uint8arr.buffer);
   ], 
 }
 ```
+
+## How to build
+
+1. Clone the repo from github `git clone https://github.com/tom-konda/cty2json.git` 
+2. Change current directory `cd cty2json` 
+3. Run `npm install`
+4. Run `npm run build`
 
 ## License
 Licensed under the GPLv3

@@ -57,18 +57,17 @@ $ cty2json [options] <inputFile>
 <!DOCTYPE html>
 <html>
 <head>
-  <script type="module" src="test.js"></script>
   <script type="module">
-    import cty2JSON from '../../lib/cty2json.js';
+    import cty2JSON from './cty2json.js';
     
-    fetch('../src/test/fixture/cty2jsonTest.cty')
+    fetch('./cty2jsonTest.cty')
     .then(
       (result) => {
         return result.arrayBuffer();
       }
     ).then(
       (buffer) => {
-        const cityData = JSON.parse(cty2JSON.analyze(buffer));
+        const cityData = cty2JSON.analyze(buffer);
       }
     );
   </script>
@@ -201,6 +200,14 @@ let json = Cty2JSON.analyze(uint8arr.buffer);
   ], 
 }
 ```
+
+## ビルドの仕方
+
+1. `git clone https://github.com/tom-konda/cty2json.git` を実行し、レポジトリをクローンします
+2. `cd cty2json` でカレントディレクトリを変更します
+3. `npm install` を実行します
+4. `npm run build` を実行します
+
 
 ## ライセンス
 ライセンスはGPLv3になります。

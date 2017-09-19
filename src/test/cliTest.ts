@@ -35,7 +35,7 @@ describe(
       }
     )
     it(
-      'Output to non-exsistent dircectory',
+      'Output to non-existent directory',
       function () {
         const result = childProc.spawnSync(
           'node',

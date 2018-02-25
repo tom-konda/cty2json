@@ -1,94 +1,58 @@
 import commander = require('commander');
+const promisify = require('util.promisify');
 import fs = require('fs');
 const Cty2JSON = <Cty2JSONStatic>require('../index');
 const packageInfo = JSON.parse(fs.readFileSync('./package.json').toString());
 
 const fileAccessCheck = (inputFile: string) => {
-  return new Promise(
-    (resolve, reject) => {
-      let isfileReadable: number;
-      if (typeof fs.constants === 'undefined') {
-        // for Node 4.x
-        isfileReadable = fs.R_OK;
-      }
-      else {
-        isfileReadable = fs.constants.R_OK;
-      }
-      fs.access(
-        inputFile,
-        isfileReadable,
-        (error) => {
-          error ? reject(error) : resolve(inputFile);
-        }
-      );
-    }
-  );
+  let isfileReadable: number;
+  if (typeof fs.constants === 'undefined') {
+    // for Node 4.x
+    isfileReadable = fs.R_OK;
+  }
+  else {
+    isfileReadable = fs.constants.R_OK;
+  }
+  return promisify(fs.access)(inputFile, isfileReadable);
 }
 
-const fileFormatCheck = (inputfile: string) => {
-  return new Promise(
-    (resolve, reject) => {
-      const file = fs.readFileSync(inputfile);
-      const uint8arr = new Uint8Array(file);
-      try {
-        const ctyData = Cty2JSON.outputJSONText(uint8arr.buffer);
-        resolve(ctyData);
-      }
-      catch (error) {
-        reject(error);
-      }
-    }
-  );
+const fileFormatCheck = (inputfile: Buffer) => {
+  const uint8arr = new Uint8Array(inputfile);
+  try {
+    const ctyData = Cty2JSON.outputJSONText(uint8arr.buffer as ArrayBuffer);
+    return Promise.resolve(ctyData);
+  }
+  catch (error) {
+    return Promise.reject(error);
+  }
 }
 
-const outputJSON = (JSONtext: string, options: any) => {
-  return new Promise(
-    (resolve, reject) => {
-      const outputFile = options.output;
-      if (outputFile) {
-        fs.writeFile(
-          outputFile,
-          JSONtext,
-          (error) => {
-            error ? reject(error) : resolve(outputFile);
-          }
-        )
-      }
-      else {
-        process.stdout.write(JSONtext);
-        resolve();
-      }
+const convertCty2JSON = async (inputCTYFile: string, options: any) => {
+  try {
+    await fileAccessCheck(inputCTYFile);
+    const file = await promisify(fs.readFile)(inputCTYFile);
+    const JSONText = await fileFormatCheck(file);
+    const outputFile = options.output;
+    if (outputFile) {
+      await promisify(fs.writeFile)(outputFile, JSONText);
+      process.stdout.write(`${outputFile} was created successfully.\n`);
     }
-  )
-}
-
-const convertCty2JSON = (inputCTYFile: string, options: any) => {
-  fileAccessCheck(inputCTYFile)
-    .then(
-    fileFormatCheck,
-    (error) => {
-      console.error('Cannot Read File.');
+    else {
+      process.stdout.write(JSONText);
+    }
+  }
+  catch(error) {
+    console.log(error);
+    console.error('Cannot write a JSON file.');
+    if(error instanceof RangeError) {
+      process.stderr.write(`-1 : ${error.message}\n`);
+      process.exit(-1);
+    }
+    else if (error as NodeJS.ErrnoException instanceof Error) {
       process.stderr.write(`${error.errno} : ${error.message}\n`);
       process.exit(error.errno);
     }
-    ).then(
-    (json:string) => outputJSON(json, options),
-    (error: SyntaxError) => {
-      console.error('This is wrong Micropolis cty file.');
-      console.error(error);
-      process.stderr.write(`${error.name} : ${error.message}\n`);
-      process.exit(1);
-    }
-    ).then(
-    (outputFile) => {
-      outputFile ? process.stdout.write(`${outputFile} was created successfully.\n`) : null;
-    },
-    (error) => {
-      console.error('Cannot write a JSON file.');
-      process.stderr.write(`${error.errno} : ${error.message}\n`);
-      process.exit(error.errno);
-    }
-    );
+  }
 }
 
 commander.version(packageInfo.version)

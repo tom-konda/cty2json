@@ -3,17 +3,14 @@
   "bin": {
     "cty2json": "bin/cli.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tom-konda/cty2json.git"
-  },
+  "repository":"https://github.com/tom-konda/cty2json/tree/v0.11.x",
   "keywords": [
     "micropolis",
     "json",
     "convert"
   ],
   "types": "./lib/declaration/cty2json/index.d.ts",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "description": "This JavaScript library converts from .cty file (Micropolis format) to JSON.",
   "main": "index.js",
   "scripts": {

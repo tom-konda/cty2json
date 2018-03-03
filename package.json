@@ -13,7 +13,7 @@
     "convert"
   ],
   "types": "./lib/declaration/cty2json/index.d.ts",
-  "version": "0.10.1",
+  "version": "1.0.0",
   "description": "This JavaScript library converts from .cty file (Micropolis format) to JSON.",
   "main": "index.js",
   "scripts": {
@@ -35,7 +35,7 @@
   "author": "Tom Konda",
   "license": "GPL-3.0",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=8.0.0"
   },
   "directories": {
     "test": "src/test/"
@@ -60,7 +60,6 @@
     "typescript": "^2.7.2"
   },
   "dependencies": {
-    "commander": "^2.14.1",
-    "util.promisify": "^1.0.0"
+    "commander": "^2.14.1"
   }
 }

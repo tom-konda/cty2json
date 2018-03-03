@@ -1,19 +1,11 @@
 import commander = require('commander');
-const promisify = require('util.promisify');
+import {promisify} from 'util';
 import fs = require('fs');
 const Cty2JSON = <Cty2JSONStatic>require('../index');
 const packageInfo = JSON.parse(fs.readFileSync('./package.json').toString());
 
 const fileAccessCheck = (inputFile: string) => {
-  let isfileReadable: number;
-  if (typeof fs.constants === 'undefined') {
-    // for Node 4.x
-    isfileReadable = fs.R_OK;
-  }
-  else {
-    isfileReadable = fs.constants.R_OK;
-  }
-  return promisify(fs.access)(inputFile, isfileReadable);
+  return promisify(fs.access)(inputFile, fs.constants.R_OK);
 }
 
 const fileFormatCheck = (inputfile: Buffer) => {

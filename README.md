@@ -2,12 +2,22 @@ Cty2JSON: https://github.com/tom-konda/cty2json
 
 [![Build Status](https://travis-ci.org/tom-konda/cty2json.svg?branch=master)](https://travis-ci.org/tom-konda/cty2json)
 
+## CAUTION
+
+On Node.js, this library will support only latest LTS from next release.
+
 ## About
 This JavaScript library converts from .cty file (Micropolis format) to JSON.
 
 ## Support Browsers
 * Firefox, Chromium
 * IE 11, Google Chrome, Opera and Safari maybe works well.
+
+## Support Node.js versions
+
+* 4.x LTS
+* 6.x LTS
+* 8.x LTS
 
 ## Usage
 ### CLI

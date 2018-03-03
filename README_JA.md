@@ -2,12 +2,22 @@ Cty2JSON: https://github.com/tom-konda/cty2json
 
 [![Build Status](https://travis-ci.org/tom-konda/cty2json.svg?branch=master)](https://travis-ci.org/tom-konda/cty2json)
 
+## 注意
+
+Node.js では、次のリリースからサポート対象が最新の LTS のみになります。
+
 ## これは何？
 Micropolisのcty形式のファイルをJavaScriptを使用して、JSONに変換します。
 
 ## 対応ブラウザ
 * Firefox、Chromiumで動作確認
 * IE 11、Microsoft Edge、Google Chrome、Opera、Safari はおそらく動作するはず
+
+## 対応 Node.js バージョン
+
+* 4.x LTS
+* 6.x LTS
+* 8.x LTS
 
 ## 使い方
 ### CLI

@@ -110,50 +110,50 @@ let json = Cty2JSON.analyze(uint8arr.buffer);
   historyData : {
     residential: {
       "10years": [
-        0-255, // 120 times
+        0-255, // 120 items
       ],
       "120years": [
-        0-255, // 120 times
+        0-255, // 120 items
       ],
     },
     commercial: {
       "10years": [
-        0-255, // 120 times
+        0-255, // 120 items
       ],
       "120years": [
-        0-255, // 120 times
+        0-255, // 120 items
       ],
     },
     industrial: {
       "10years": [
-        0-255, // 120 times
+        0-255, // 120 items
       ],
       "120years": [
-        0-255, // 120 times
+        0-255, // 120 items
       ],
     },
     crime: {
       "10years": [
-        0-255, // 120 times
+        0-255, // 120 items
       ],
       "120years": [
-        0-255, // 120 times
+        0-255, // 120 items
       ],
     },
     pollution: {
       "10years": [
-        0-255, // 120 times
+        0-255, // 120 items
       ],
       "120years": [
-        0-255, // 120 times
+        0-255, // 120 items
       ],
     },
     landValue: {
       "10years": [
-        0-255, // 120 times
+        0-255, // 120 items
       ],
       "120years": [
-        0-255, // 120 times
+        0-255, // 120 items
       ],
     },
   },
@@ -194,9 +194,9 @@ let json = Cty2JSON.analyze(uint8arr.buffer);
         conductive : Boolean,
         zoneCenter : Boolean,
       }, {
-      }, // 120 times
+      }, // 120 items
     ], [
-    ], // 100 times
+    ], // 100 items
   ], 
 }
 ```

@@ -1,5 +1,5 @@
 {
-  "name": "cty2json",
+  "name": "@tom-konda/cty2json",
   "bin": {
     "cty2json": "bin/cli.js"
   },

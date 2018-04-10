@@ -12,10 +12,12 @@ const bannerText = `
 `
 
 export default {
-  banner: bannerText.trim(),
   input: './bin/cli.js',
   external: ['fs'],
   output: [
-    { file: 'bin/cli.js', format: 'cjs' },
+    {
+      banner: bannerText.trim(),
+      file: 'bin/cli.js', format: 'cjs'
+    },
   ],
 }

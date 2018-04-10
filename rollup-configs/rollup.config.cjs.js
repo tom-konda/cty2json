@@ -9,7 +9,7 @@ export default {
   ],
   plugins: [
     buble({
-      node: 4,
+      node: 8,
     })
   ]
 }

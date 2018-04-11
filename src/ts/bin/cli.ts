@@ -2,7 +2,7 @@ import commander = require('commander');
 import {promisify} from 'util';
 import fs = require('fs');
 const Cty2JSON = <Cty2JSONStatic>require('../index');
-const packageInfo = JSON.parse(fs.readFileSync('./package.json').toString());
+const packageInfo = JSON.parse(fs.readFileSync(`${__dirname}/../package.json`).toString());
 
 const fileAccessCheck = (inputFile: string) => {
   return promisify(fs.access)(inputFile, fs.constants.R_OK);

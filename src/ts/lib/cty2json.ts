@@ -9,7 +9,7 @@ const cty2JSONStatic = (() => {
       SOME_EDITION_FILESIZE = 27120;
     let offset = 0;
 
-    const cityData: cty2JSONDataFormat = {
+    const cityData = {
       fileSize: 0,
       historyData: {},
       miscData: {},
@@ -32,20 +32,24 @@ const cty2JSONStatic = (() => {
       HALF_HISTORY_DATA_COUNT = HISTORY_DATA_COUNT / 2,
       HISTORY_DATA_BYTE = HISTORY_DATA_COUNT * SHORT_BYTE_LENGTH;
     // Get history graph data from city
-    const getHistoryData = function (property: string) {
+    const getHistoryData = function (property: keyof historyData) {
       const historyData = data.slice(offset, offset + HISTORY_DATA_BYTE);
-      cityData.historyData[property] = {
-        '10years': [],
-        '120years': [],
-      };
-      for (let i = 0; i < HISTORY_DATA_COUNT; ++i) {
-        if (i < HALF_HISTORY_DATA_COUNT) {
-          cityData.historyData[property]['10years'].unshift(new DataView(historyData, i * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false));
-        }
-        else {
-          cityData.historyData[property]['120years'].unshift(new DataView(historyData, i * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false));
+      const currentHistoryData = cityData.historyData;
+      const propertyData:{[property:string] : historyGraphData} = {
+        [property] : {
+          '10years': [],
+          '120years': [],
         }
       }
+      for (let i = 0; i < HISTORY_DATA_COUNT; ++i) {
+        if (i < HALF_HISTORY_DATA_COUNT) {
+          propertyData[property]['10years'].unshift(new DataView(historyData, i * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false));
+        }
+        else {
+          propertyData[property]['120years'].unshift(new DataView(historyData, i * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false));
+        }
+      }
+      cityData.historyData = Object.assign(currentHistoryData, propertyData)
       offset += HISTORY_DATA_BYTE;
     };
 
@@ -60,7 +64,8 @@ const cty2JSONStatic = (() => {
     const miscData = data.slice(offset, offset + MISC_DATA_BYTE);
     offset += MISC_DATA_BYTE;
 
-    const getMiscData = (property: string, miscOffset: number, length: number) => {
+    const getMiscData = (property: keyof miscData, miscOffset: number, length: number) => {
+      const currentMiscData = cityData.miscData;
       let value = 0;
       switch (length) {
         case 1:
@@ -69,7 +74,7 @@ const cty2JSONStatic = (() => {
         case 2:
           value = new DataView(miscData, miscOffset * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH * 2).getInt32(0, false)
       }
-      cityData.miscData[property] = value;
+      cityData.miscData = Object.assign(currentMiscData, {[property] : value});
     };
     getMiscData('RPopulation', 2, 1);
     getMiscData('CPopulation', 3, 1);

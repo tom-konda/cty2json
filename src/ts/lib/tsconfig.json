@@ -1,6 +1,7 @@
 {
   "extends": "../base-config/tsconfig.json",
   "compilerOptions": {
+    "target": "es2015",
     "module": "es2015",
     "lib": [
       "es2015"

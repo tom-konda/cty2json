@@ -4,8 +4,7 @@
     "target": "es2015",
     "module": "commonjs",
     "lib": [
-      "es2015",
-      "dom"
+      "es2016"
     ],
     "typeRoots": [
       "node_modules/@types",
@@ -13,7 +12,6 @@
     ],
     "types": [
       "node",
-      "jsdom",
       "mocha",
       "tmp",
       "cty2json"

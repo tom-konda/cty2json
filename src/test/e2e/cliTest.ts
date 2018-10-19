@@ -3,7 +3,9 @@ import assert = require('assert');
 import childProc = require('child_process');
 import fs = require('fs');
 import tmp = require('tmp');
-import cityDataCommonTest = require('./cityDataCommonTest');
+import cityDataCommonTest = require('../common/cityDataCommonTest');
+
+const fixturesDir = `${__dirname}/../fixtures`;
 
 describe(
   'cli Cty2JSON failure test',
@@ -15,7 +17,7 @@ describe(
           'node',
           [
             './bin/cli.js',
-            `${__dirname}/fixture/c.cty`,
+            `${fixturesDir}/c.cty`,
           ]
         );
         assert.notEqual(result.stderr.length, 0, 'File check is not worked.');
@@ -28,7 +30,7 @@ describe(
           'node',
           [
             './bin/cli.js',
-            `${__dirname}/fixture/wrong.cty`,
+            `${fixturesDir}/wrong.cty`,
           ]
         );
         assert.notEqual(result.stderr.length, 0, 'File format is not checked.');
@@ -41,7 +43,7 @@ describe(
           'node',
           [
             './bin/cli.js',
-            `${__dirname}/fixture/cty2jsonTest.cty`,
+            `${fixturesDir}/cty2jsonTest.cty`,
             `-o`,
             `foobar/hogehoge.json`
           ]
@@ -71,7 +73,7 @@ describe(
           'node',
           [
             './bin/cli.js',
-            `${__dirname}/fixture/cty2jsonTest.cty`,
+            `${fixturesDir}/cty2jsonTest.cty`,
           ]
         );
         const cityData = <cty2JSONDataFormat>JSON.parse(result.stdout);
@@ -86,7 +88,7 @@ describe(
           'node',
           [
             './bin/cli.js',
-            `${__dirname}/fixture/cty2jsonTest.cty`,
+            `${fixturesDir}/cty2jsonTest.cty`,
             '-o',
             `${tmpFile.name}`,
           ]

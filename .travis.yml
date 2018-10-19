@@ -5,6 +5,9 @@ os:
 language: node_js
 node_js:
   - "8"
+cache:
+  directories:
+    - "$HOME/.npm"
 script:
   - "npm run build"
   - "npm link && cty2json -V"

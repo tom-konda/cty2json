@@ -62,6 +62,6 @@ type miscData = {
 }
 
 declare const Cty2JSON: Cty2JSONStatic;
-declare module 'cty2json' {
+declare module '@tom-konda/cty2json' {
   export = Cty2JSON;
 }

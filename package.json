@@ -12,8 +12,8 @@
     "json",
     "convert"
   ],
-  "types": "./lib/declaration/cty2json/index.d.ts",
-  "version": "1.0.1",
+  "types": "./declaration/cty2json/index.d.ts",
+  "version": "1.0.2",
   "description": "This JavaScript library converts from .cty file (Micropolis format) to JSON.",
   "main": "index.js",
   "scripts": {

@@ -49,7 +49,10 @@ const cty2JSONStatic = (() => {
           propertyData[property]['120years'].unshift(new DataView(historyData, i * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false));
         }
       }
-      cityData.historyData = Object.assign(currentHistoryData, propertyData)
+      cityData.historyData = {
+        ...currentHistoryData,
+        ...propertyData,
+      }
       offset += HISTORY_DATA_BYTE;
     };
 
@@ -74,7 +77,10 @@ const cty2JSONStatic = (() => {
         case 2:
           value = new DataView(miscData, miscOffset * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH * 2).getInt32(0, false)
       }
-      cityData.miscData = Object.assign(currentMiscData, {[property] : value});
+      cityData.miscData = {
+        ...currentMiscData,
+        ...{[property] : value},
+      };
     };
     getMiscData('RPopulation', 2, 1);
     getMiscData('CPopulation', 3, 1);

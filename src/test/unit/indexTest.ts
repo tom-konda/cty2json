@@ -7,27 +7,27 @@ const fixturesDir = `${__dirname}/../fixtures`;
 
 describe(
   'index.js Cty2JSON',
-  function () {
+  function() {
     const file = fs.readFileSync(`${fixturesDir}/cty2jsonTest.cty`);
     const cityData = Cty2JSON.analyze(new Uint8Array(file).buffer) as cty2JSONDataFormat;
 
     it(
       'Check History Data Order',
-      function () {
+      function() {
         cityDataCommonTest.checkHistoryData(cityData);
       }
     )
 
     it(
       'Get City Budget',
-      function () {
+      function() {
         cityDataCommonTest.checkMiscData(cityData);
       }
     )
 
     it(
       'Check tile data',
-      function () {
+      function() {
         cityDataCommonTest.checkTileData(cityData);
       }
     )

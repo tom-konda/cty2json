@@ -9,10 +9,10 @@ const fixturesDir = `${__dirname}/../fixtures`;
 
 describe(
   'cli Cty2JSON failure test',
-  function () {
+  function() {
     it(
       'File is missing',
-      function () {
+      function() {
         const result = childProc.spawnSync(
           'node',
           [
@@ -25,7 +25,7 @@ describe(
     )
     it(
       'File is wrong format',
-      function () {
+      function() {
         const result = childProc.spawnSync(
           'node',
           [
@@ -38,7 +38,7 @@ describe(
     )
     it(
       'Output to non-existent directory',
-      function () {
+      function() {
         const result = childProc.spawnSync(
           'node',
           [
@@ -56,10 +56,10 @@ describe(
 
 describe(
   'cli Cty2JSON output test',
-  function () {
+  function() {
     let tmpFile: tmp.SynchrounousResult;
     before(
-      function () {
+      function() {
         tmpFile = tmp.fileSync({
           prefix: `cty2json-${new Date().getTime()}`,
         })
@@ -68,7 +68,7 @@ describe(
 
     it(
       'Output test',
-      function () {
+      function() {
         const result = childProc.spawnSync(
           'node',
           [
@@ -76,14 +76,14 @@ describe(
             `${fixturesDir}/cty2jsonTest.cty`,
           ]
         );
-        const cityData = <cty2JSONDataFormat>JSON.parse(result.stdout);
+        const cityData = JSON.parse(result.stdout) as cty2JSONDataFormat;
         cityDataCommonTest.checkMiscData(cityData);
         cityDataCommonTest.checkTileData(cityData);
       }
     )
     it(
       'JSON output test',
-      function () {
+      function() {
         childProc.spawnSync(
           'node',
           [
@@ -94,14 +94,14 @@ describe(
           ]
         );
         const json = fs.readFileSync(`${tmpFile.name}`, 'utf8');
-        const cityData = <cty2JSONDataFormat>JSON.parse(json);
+        const cityData = JSON.parse(json) as cty2JSONDataFormat;
         cityDataCommonTest.checkHistoryData(cityData, 'File is not created correctly.');
         cityDataCommonTest.checkMiscData(cityData, 'File is not created correctly.');
       }
     )
 
     after(
-      function () {
+      function() {
         fs.unlinkSync(`${tmpFile.name}`);
       }
     )

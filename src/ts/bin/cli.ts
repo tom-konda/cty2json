@@ -1,7 +1,7 @@
 import commander = require('commander');
 import {promisify} from 'util';
 import fs = require('fs');
-const Cty2JSON = <Cty2JSONStatic>require('../index');
+const Cty2JSON = require('../index') as Cty2JSONStatic;
 const packageInfo = JSON.parse(fs.readFileSync(`${__dirname}/../package.json`).toString());
 
 const fileAccessCheck = (inputFile: string) => {
@@ -19,7 +19,7 @@ const fileFormatCheck = (inputfile: Buffer) => {
   }
 }
 
-const convertCty2JSON = async (inputCTYFile: string, options: any) => {
+const convertCty2JSON = async(inputCTYFile: string, options: {output: string}) => {
   try {
     await fileAccessCheck(inputCTYFile);
     const file = await promisify(fs.readFile)(inputCTYFile);

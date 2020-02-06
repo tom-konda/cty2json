@@ -1,15 +1,14 @@
-import commander = require('commander');
-import {promisify} from 'util';
-import fs = require('fs');
+import * as commander from 'commander';
+import {constants as fsConstants, promises as fsPromises, readFileSync} from 'fs';
 const Cty2JSON = require('../index') as Cty2JSONStatic;
-const packageInfo = JSON.parse(fs.readFileSync(`${__dirname}/../package.json`).toString());
+const packageInfo = JSON.parse(readFileSync(`${__dirname}/../package.json`).toString());
 
 const fileAccessCheck = (inputFile: string) => {
-  return promisify(fs.access)(inputFile, fs.constants.R_OK);
+  return fsPromises.access(inputFile, fsConstants.R_OK);
 }
 
-const fileFormatCheck = (inputfile: Buffer) => {
-  const uint8arr = new Uint8Array(inputfile);
+const fileFormatCheck = (inputFile: Buffer) => {
+  const uint8arr = new Uint8Array(inputFile);
   try {
     const ctyData = Cty2JSON.outputJSONText(uint8arr.buffer as ArrayBuffer);
     return Promise.resolve(ctyData);
@@ -19,14 +18,14 @@ const fileFormatCheck = (inputfile: Buffer) => {
   }
 }
 
-const convertCty2JSON = async(inputCTYFile: string, options: {output: string}) => {
+const convertCty2JSON = async(inputFile: string, options: {output: string}) => {
   try {
-    await fileAccessCheck(inputCTYFile);
-    const file = await promisify(fs.readFile)(inputCTYFile);
+    await fileAccessCheck(inputFile);
+    const file = await fsPromises.readFile(inputFile);
     const JSONText = await fileFormatCheck(file);
     const outputFile = options.output;
     if (outputFile) {
-      await promisify(fs.writeFile)(outputFile, JSONText);
+      await fsPromises.writeFile(outputFile, JSONText);
       process.stdout.write(`${outputFile} was created successfully.\n`);
     }
     else {

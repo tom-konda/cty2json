@@ -9,15 +9,15 @@ const defaultMessages = {
   'tile': 'Tile data is not analyzed correctly.',
 }
 
-export const checkHistoryData = (cityData: cty2JSONDataFormat, message: string = defaultMessages.history) => {
+export const checkHistoryData = (cityData: cty2JSONDataFormat, message: string = defaultMessages.history): void => {
   assert.deepEqual(cityData.historyData['crime']['10years'][0], 0, message);
 }
 
-export const checkMiscData = (cityData: cty2JSONDataFormat, message: string = defaultMessages.misc) => {
+export const checkMiscData = (cityData: cty2JSONDataFormat, message: string = defaultMessages.misc): void => {
   assert.deepEqual(cityData.miscData.budget, 10560, message);
 }
 
-export const checkTileData = (cityData: cty2JSONDataFormat, message: string = defaultMessages.tile) => {
+export const checkTileData = (cityData: cty2JSONDataFormat, message: string = defaultMessages.tile): void => {
   const mapTile = cityData.tileData;
   const actualTileData = [
     mapTile[90][116].building,

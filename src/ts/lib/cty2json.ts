@@ -32,7 +32,7 @@ const cty2JSONStatic = (() => {
       HALF_HISTORY_DATA_COUNT = HISTORY_DATA_COUNT / 2,
       HISTORY_DATA_BYTE = HISTORY_DATA_COUNT * SHORT_BYTE_LENGTH;
     // Get history graph data from city
-    const getHistoryData = function(property: keyof historyData) {
+    const getHistoryData = (property: keyof historyData) => {
       const historyData = data.slice(offset, offset + HISTORY_DATA_BYTE);
       const currentHistoryData = cityData.historyData;
       const propertyData: {[property: string]: historyGraphData} = {

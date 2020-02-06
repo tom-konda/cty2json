@@ -28,9 +28,9 @@
     "rollup:trans-node": "rollup -c ./rollup-configs/rollup.config.cjs.js",
     "rollup:trans-legacy-browser": "rollup -c ./rollup-configs/rollup.legacy.config.js",
     "doc-gen": "typedoc --name Cty2JSON --readme ./README.md --excludeExternals --target es2015 --module es2015 --includeDeclarations --out ./doc ./declaration/cty2json/index.d.ts",
-    "lint": "tslint -c ./tslint.json src/**/*.ts",
+    "lint": "eslint src/**/*.ts",
     "test": "cross-env TS_NODE_PROJECT=src/test/tsconfig.json mocha --require espower-typescript/guess src/test/unit/**.ts",
-    "test:cli": "cross-env TS_NODE_TRANSPILE_ONLY=1 mocha --require espower-typescript/guess src/test/e2e/**.ts"
+    "test:cli": "cross-env TS_NODE_PROJECT=src/test/tsconfig.json mocha --require espower-typescript/guess src/test/e2e/**.ts"
   },
   "author": "Tom Konda",
   "license": "GPL-3.0",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",
-    "@types/node": "12",
+    "@types/node": "^12",
     "@types/power-assert": "^1.5.2",
     "@types/tmp": "^0.1.0",
     "@typescript-eslint/eslint-plugin": "^2.14.0",
@@ -61,6 +61,6 @@
     "typescript": "^3.7.4"
   },
   "dependencies": {
-    "commander": "^4.0.1"
+    "commander": "2.20.3"
   }
 }

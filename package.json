@@ -27,7 +27,7 @@
     "rollup:cli-banner": "rollup -c ./rollup-configs/rollup.cli-banner.config.js",
     "rollup:trans-node": "rollup -c ./rollup-configs/rollup.config.cjs.js",
     "rollup:trans-legacy-browser": "rollup -c ./rollup-configs/rollup.legacy.config.js",
-    "doc-gen": "typedoc --name Cty2JSON --readme ./README.md --excludeExternals --target es2015 --module es2015 --includeDeclarations --out ./doc ./declaration/cty2json/index.d.ts",
+    "doc-gen": "typedoc --name Cty2JSON --readme ./README.md --excludeExternals --tsconfig ./src/ts/lib --includeDeclarations --out ./doc ./declaration/cty2json/index.d.ts",
     "lint": "eslint src/**/*.ts",
     "test": "cross-env TS_NODE_PROJECT=src/test/tsconfig.json mocha --require espower-typescript/guess src/test/unit/**.ts",
     "test:cli": "cross-env TS_NODE_PROJECT=src/test/tsconfig.json mocha --require espower-typescript/guess src/test/e2e/**.ts"

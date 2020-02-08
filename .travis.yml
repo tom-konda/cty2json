@@ -1,6 +1,7 @@
 os:
   - linux
   - osx
+  - windows
 language: node_js
 node_js:
   - "12"
@@ -10,3 +11,5 @@ cache:
 script:
   - "npm run build"
   - "npm link && cty2json -V"
+env:
+  - YARN_GPG=no

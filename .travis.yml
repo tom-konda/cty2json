@@ -11,3 +11,5 @@ cache:
 script:
   - "npm run build"
   - "npm link && cty2json -V"
+before_script:
+  export GRADLE_OPTS=-Dorg.gradle.daemon=false

@@ -32,10 +32,10 @@ const cty2JSONStatic = (() => {
       HALF_HISTORY_DATA_COUNT = HISTORY_DATA_COUNT / 2,
       HISTORY_DATA_BYTE = HISTORY_DATA_COUNT * SHORT_BYTE_LENGTH;
     // Get history graph data from city
-    const getHistoryData = function (property: keyof historyData) {
+    const getHistoryData = (property: keyof historyData) => {
       const historyData = data.slice(offset, offset + HISTORY_DATA_BYTE);
       const currentHistoryData = cityData.historyData;
-      const propertyData:{[property:string] : historyGraphData} = {
+      const propertyData: {[property: string]: historyGraphData} = {
         [property] : {
           '10years': [],
           '120years': [],
@@ -49,7 +49,10 @@ const cty2JSONStatic = (() => {
           propertyData[property]['120years'].unshift(new DataView(historyData, i * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false));
         }
       }
-      cityData.historyData = Object.assign(currentHistoryData, propertyData)
+      cityData.historyData = {
+        ...currentHistoryData,
+        ...propertyData,
+      }
       offset += HISTORY_DATA_BYTE;
     };
 
@@ -68,13 +71,16 @@ const cty2JSONStatic = (() => {
       const currentMiscData = cityData.miscData;
       let value = 0;
       switch (length) {
-        case 1:
-          value = new DataView(miscData, miscOffset * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false)
-          break;
-        case 2:
-          value = new DataView(miscData, miscOffset * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH * 2).getInt32(0, false)
+      case 1:
+        value = new DataView(miscData, miscOffset * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH).getInt16(0, false)
+        break;
+      case 2:
+        value = new DataView(miscData, miscOffset * SHORT_BYTE_LENGTH, SHORT_BYTE_LENGTH * 2).getInt32(0, false)
       }
-      cityData.miscData = Object.assign(currentMiscData, {[property] : value});
+      cityData.miscData = {
+        ...currentMiscData,
+        ...{[property] : value},
+      };
     };
     getMiscData('RPopulation', 2, 1);
     getMiscData('CPopulation', 3, 1);

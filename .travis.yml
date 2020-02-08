@@ -13,3 +13,5 @@ script:
   - "npm link && cty2json -V"
 before_script:
   export GRADLE_OPTS=-Dorg.gradle.daemon=false
+env:
+  - YARN_GPG=no

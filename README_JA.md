@@ -30,7 +30,7 @@ $ cty2json [options] <inputFile>
 ### ライブラリ
 #### ブラウザ (従来からのスタイル)
 
-```html:browser.html
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -57,7 +57,7 @@ $ cty2json [options] <inputFile>
 
 #### ブラウザ (ES Modules)
 
-```html:es_modules.html
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,7 +81,7 @@ $ cty2json [options] <inputFile>
 
 #### Web worker
 
-```js:worker.js
+```js
 importScripts('../../lib/cty2json.js');
 
 self.addEventListener(
@@ -97,7 +97,7 @@ self.addEventListener(
 
 #### Node.js
 
-```js:node.js
+```js
 const Cty2JSON = require('../../cty2json');
 
 let file = fs.readFileSync(`PATH_TO_CTYFILE/test.cty`);

@@ -32,7 +32,7 @@ Options
 ### Library
 #### Browser (Legacy Style)
 
-```html:browser.html
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -59,7 +59,7 @@ Options
 
 #### Browser (ES Modules)
 
-```html:es_modules.html
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +83,7 @@ Options
 
 #### Web worker
 
-```js:worker.js
+```js
 importScripts('../../lib/cty2json.js');
 
 self.addEventListener(
@@ -99,7 +99,7 @@ self.addEventListener(
 
 #### Node.js
 
-```js:node.js
+```js
 const Cty2JSON = require('../../cty2json');
 
 let file = fs.readFileSync(`PATH_TO_CTYFILE/test.cty`);

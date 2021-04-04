@@ -1,19 +1,24 @@
-Cty2JSON: https://github.com/tom-konda/cty2json
-
-[![Build Status](https://travis-ci.org/tom-konda/cty2json.svg?branch=master)](https://travis-ci.org/tom-konda/cty2json)
-
+# Cty2JSON
 
 ## About
 This JavaScript library converts from .cty file (Micropolis format) to JSON.
 
+## Future planning (ver 2.0.x)
+
+- Support only ES Module format.
+  - Abandon CommonJS format and ES5 format output.
+- Change testing framework from mocha to Jest.
+- Change file output option to be required on CLI.
+  - Abandon text output with standard output feature.
+
 ## Support Browsers
 - Firefox, Google Chrome
-- MS Edge, Safari works probabry.
+- Safari works probably.
 
 
-## Support Node.js versions
+## Support Node.js version
 
-* Latest LTS
+- Latest LTS only
 
 ## Usage
 ### CLI

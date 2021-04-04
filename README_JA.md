@@ -1,17 +1,23 @@
-Cty2JSON: https://github.com/tom-konda/cty2json
-
-[![Build Status](https://travis-ci.org/tom-konda/cty2json.svg?branch=master)](https://travis-ci.org/tom-konda/cty2json)
+# Cty2JSON
 
 ## これは何？
-Micropolisのcty形式のファイルをJavaScriptを使用して、JSONに変換します。
+Micropolis の cty 形式のファイルを JavaScript を使用して、JSON に変換します。
+
+## 将来の予定（v2.0.x）
+
+- ES Module のみサポートに変更
+  - CommonJS 形式と ES5 相当形式での出力の廃止
+- テストフレームワークの Jest への切り替え
+- CLI でのファイル出力を必須オプションに変更
+  - 標準出力でのテキスト出力機能の廃止
 
 ## 対応ブラウザ
-- Firefox, Google Chrome で動作確認
-- MS Edge, Safari も動くはず
+- Firefox, Google Chrome
+- Safari も動くはず
 
 ## 対応 Node.js バージョン
 
-* 最新の LTS
+- 最新の LTS のみ
 
 ## 使い方
 ### CLI
@@ -211,7 +217,6 @@ let json = Cty2JSON.analyze(uint8arr.buffer);
 2. `cd cty2json` でカレントディレクトリを変更します
 3. `npm install` を実行します
 4. `npm run build` を実行します
-
 
 ## ライセンス
 ライセンスはGPLv3になります。

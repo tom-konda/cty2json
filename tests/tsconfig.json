@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "lib": [
+      "es2020"
+    ],
+    "types": [
+      "cty2json",
+      "node",
+      "jest",
+      "tmp",
+    ],
+    "sourceMap": false
+  }
+}

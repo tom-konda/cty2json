@@ -1,8 +1,8 @@
 'use strict';
-import assert = require('assert');
 import { spawnSync } from 'child_process';
 import { readFileSync, unlinkSync } from 'fs';
 import { fileSync, FileResult } from 'tmp';
+import { cty2JSONDataFormat } from '../../declaration/cty2json';
 import { checkMiscData, checkTileData, checkHistoryData } from '../common/cityDataCommonTest';
 
 const fixturesDir = `${__dirname}/../fixtures`;
@@ -16,11 +16,11 @@ describe(
         const {stderr} = spawnSync(
           'node',
           [
-            './bin/cli.js',
+            './bin/cli.cjs',
             `${fixturesDir}/c.cty`,
           ]
         );
-        assert.notEqual(stderr.toString().length, 0, 'File check is not worked.');
+        expect(stderr.toString().length).toBeGreaterThan(0)
       }
     )
     it(
@@ -29,11 +29,11 @@ describe(
         const {stderr} = spawnSync(
           'node',
           [
-            './bin/cli.js',
+            './bin/cli.cjs',
             `${fixturesDir}/wrong.cty`,
           ]
         );
-        assert.notEqual(stderr.toString().length, 0, 'File format is not checked.');
+        expect(stderr.toString().length).toBeGreaterThan(0)
       }
     )
     it(
@@ -42,13 +42,13 @@ describe(
         const {stderr} = spawnSync(
           'node',
           [
-            './bin/cli.js',
+            './bin/cli.cjs',
             `${fixturesDir}/cty2jsonTest.cty`,
             `-o`,
             `foobar/hogehoge.json`
           ]
         );
-        assert.notEqual(stderr.toString().length, 0, `Output error isn't checked.`);
+        expect(stderr.toString().length).toBeGreaterThan(0)
       }
     )
   }
@@ -59,10 +59,10 @@ describe(
   () => {
     let tmpFile: FileResult;
     let fileLength = 0;
-    before(
+    beforeEach(
       () => {
         tmpFile = fileSync({
-          prefix: `cty2json-${new Date().getTime()}`,
+          prefix: `cty2json-${Date.now()}`,
         })
       }
     );
@@ -73,7 +73,7 @@ describe(
         spawnSync(
           'node',
           [
-            './bin/cli.js',
+            './bin/cli.cjs',
             `${fixturesDir}/cty2jsonTest.cty`,
             '-o',
             `${tmpFile.name}`,
@@ -82,8 +82,8 @@ describe(
         const json = readFileSync(`${tmpFile.name}`, 'utf8');
         const cityData = JSON.parse(json) as cty2JSONDataFormat;
         fileLength = json.length + 3000;
-        checkHistoryData(cityData, 'File is not created correctly.');
-        checkMiscData(cityData, 'File is not created correctly.');
+        checkHistoryData(cityData);
+        checkMiscData(cityData);
       }
     )
     it(
@@ -92,7 +92,7 @@ describe(
         const {stdout} = spawnSync(
           'node',
           [
-            './bin/cli.js',
+            './bin/cli.cjs',
             `${fixturesDir}/cty2jsonTest.cty`,
           ],
           {
@@ -105,7 +105,7 @@ describe(
       }
     )
 
-    after(
+    afterEach(
       () => {
         unlinkSync(`${tmpFile.name}`);
       }

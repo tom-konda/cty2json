@@ -1,21 +1,27 @@
 {
   "name": "@tom-konda/cty2json",
-  "bin": {
-    "cty2json": "bin/cli.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tom-konda/cty2json.git"
-  },
+  "author": "Tom Konda",
+  "version": "2.0.0",
+  "description": "This JavaScript library converts from .cty file (Micropolis format) to JSON.",
+  "license": "GPL-3.0",
   "keywords": [
     "micropolis",
     "json",
     "convert"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tom-konda/cty2json.git"
+  },
+  "bin": {
+    "cty2json": "bin/cli.cjs"
+  },
+  "type": "module",
+  "exports": {
+    "import": "./lib/cty2json.js",
+    "require": "./lib/cty2json.cjs"
+  },
   "types": "./declaration/cty2json/index.d.ts",
-  "version": "1.0.5",
-  "description": "This JavaScript library converts from .cty file (Micropolis format) to JSON.",
-  "main": "index.js",
   "scripts": {
     "prepublishOnly": "npm run build",
     "prebuild": "npm run clean",
@@ -31,13 +37,8 @@
     "test": "jest --config ./jest.config.mjs ./tests/unit",
     "test:cli": "jest --config ./jest.config.mjs ./tests/e2e"
   },
-  "author": "Tom Konda",
-  "license": "GPL-3.0",
   "engines": {
-    "node": ">=12.13.0"
-  },
-  "directories": {
-    "test": "src/test/"
+    "node": ">=14.15.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",

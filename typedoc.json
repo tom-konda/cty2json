@@ -1,0 +1,7 @@
+{
+  "name": "Cty2JSON",
+  "readme": "./README.md",
+  "tsconfig": "./src/ts/lib",
+  "entryPoints": ["./declaration/cty2json/index.d.ts"],
+  "out": "./doc"
+}

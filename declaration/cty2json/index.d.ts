@@ -1,13 +1,8 @@
-type cty2JSONDataFormat = {
+export type cty2JSONDataFormat = {
   fileSize: number;
   historyData: historyData;
   miscData: miscData;
   tileData: tileData[][];
-}
-
-type Cty2JSONStatic = {
-  analyze(data: ArrayBuffer): cty2JSONDataFormat;
-  outputJSONText(data: ArrayBuffer): string;
 }
 
 type tileData = {
@@ -59,9 +54,4 @@ type miscData = {
   policeCovered: number;
   fireCovered: number;
   transportCovered: number;
-}
-
-declare const Cty2JSON: Cty2JSONStatic;
-declare module '@tom-konda/cty2json' {
-  export = Cty2JSON;
 }

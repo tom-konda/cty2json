@@ -1,16 +1,23 @@
-import * as commander from 'commander';
-import {constants as fsConstants, promises as fsPromises, readFileSync} from 'fs';
-const Cty2JSON = require('../index') as Cty2JSONStatic;
+import { program } from 'commander';
+import {constants as fsConstants, readFileSync} from 'fs';
+import { access, readFile, writeFile } from 'fs/promises';
+import {outputJSONText} from '../lib/cty2json';
+
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 const packageInfo = JSON.parse(readFileSync(`${__dirname}/../package.json`).toString());
 
 const fileAccessCheck = (inputFile: string) => {
-  return fsPromises.access(inputFile, fsConstants.R_OK);
+  return access(inputFile, fsConstants.R_OK);
 }
 
 const fileFormatCheck = (inputFile: Buffer) => {
   const uint8arr = new Uint8Array(inputFile);
   try {
-    const ctyData = Cty2JSON.outputJSONText(uint8arr.buffer as ArrayBuffer);
+    const ctyData = outputJSONText(uint8arr.buffer as ArrayBuffer);
     return Promise.resolve(ctyData);
   }
   catch (error) {
@@ -18,19 +25,18 @@ const fileFormatCheck = (inputFile: Buffer) => {
   }
 }
 
-const convertCty2JSON = async(inputFile: string, options: {output: string}) => {
+const convertCty2JSON = (...args: [string, {output: string}]) => {
+  const [inputFile, options] = args;
   try {
-    await fileAccessCheck(inputFile);
-    const file = await fsPromises.readFile(inputFile);
-    const JSONText = await fileFormatCheck(file);
-    const outputFile = options.output;
-    if (outputFile) {
-      await fsPromises.writeFile(outputFile, JSONText);
+    const fileConversion = async() => {
+      await fileAccessCheck(inputFile);
+      const file = await readFile(inputFile);
+      const JSONText = await fileFormatCheck(file);
+      const outputFile = options.output;
+      await writeFile(outputFile, JSONText);
       process.stdout.write(`${outputFile} was created successfully.\n`);
     }
-    else {
-      process.stdout.write(JSONText);
-    }
+    fileConversion();
   }
   catch(error) {
     console.log(error);
@@ -39,17 +45,21 @@ const convertCty2JSON = async(inputFile: string, options: {output: string}) => {
       process.stderr.write(`-1 : ${error.message}\n`);
       process.exit(-1);
     }
-    else if (error as NodeJS.ErrnoException instanceof Error) {
-      process.stderr.write(`${error.errno} : ${error.message}\n`);
-      process.exit(error.errno);
+    else if (error instanceof Error) {
+      process.stderr.write(`${(<NodeJS.ErrnoException>error).errno} : ${error.message}\n`);
+      process.exit((<NodeJS.ErrnoException>error).errno);
     }
   }
 }
 
-commander.version(packageInfo.version)
-  .command('<inputFile>', 'Path to a Micropolis .cty file')
-  .option('-o, --output <outputFile>', 'Output JSON file')
-  .description('Output JSON File from a Micropolis cty file')
-  .usage('[options] <inputFile>')
-  .action(convertCty2JSON)
-  .parse(process.argv);
+async function main() {
+  program.version(packageInfo.version, '-v, --version', 'Output the current version')
+    .arguments('<inputFile>')
+    .requiredOption('-o, --output <outputFile>', 'Output JSON file')
+    .description('Output JSON from a Micropolis cty file')
+    .usage('[options] <inputFile>')
+    .action(convertCty2JSON);
+  return await program.parseAsync();
+}
+
+main();

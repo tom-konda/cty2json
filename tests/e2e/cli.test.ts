@@ -84,23 +84,6 @@ describe(
         fileLength = json.length + 3000;
         checkHistoryData(cityData);
         checkMiscData(cityData);
-      }
-    )
-    it(
-      'Output test',
-      () => {
-        const {stdout} = spawnSync(
-          'node',
-          [
-            './bin/cli.cjs',
-            `${fixturesDir}/cty2jsonTest.cty`,
-          ],
-          {
-            maxBuffer: fileLength,
-          }
-        );
-        const cityData = JSON.parse(stdout.toString()) as cty2JSONDataFormat;
-        checkMiscData(cityData);
         checkTileData(cityData);
       }
     )

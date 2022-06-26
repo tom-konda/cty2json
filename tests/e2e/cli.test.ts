@@ -11,7 +11,7 @@ describe(
   'cli Cty2JSON failure test',
   () => {
     it(
-      'File is missing',
+      'Input file is missing',
       () => {
         const {stderr} = spawnSync(
           'node',
@@ -24,7 +24,7 @@ describe(
       }
     )
     it(
-      'File is wrong format',
+      'Input file is wrong format',
       () => {
         const {stderr} = spawnSync(
           'node',

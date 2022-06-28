@@ -6,4 +6,4 @@ Thumb.db
 tslint.json
 tsconfig.json
 yarn-error.log
-.travis.yml
+/temp

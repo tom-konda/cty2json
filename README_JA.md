@@ -23,7 +23,7 @@ $ cty2json [options] <inputFile>
 
 ```bash
     -h, --help                 ヘルプの出力
-    -V, --version              バージョンの出力
+    -v, --version              バージョンの出力
     -o, --output <outputFile>  JSONファイルの出力
 ```
 

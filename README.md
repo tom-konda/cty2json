@@ -25,7 +25,7 @@ Options
 
 ```bash
     -h, --help                 output usage information
-    -V, --version              output the version number
+    -v, --version              output the version number
     -o, --output <outputFile>  Output JSON file
 ```
 

@@ -1,17 +1,21 @@
 'use strict';
 
 import { analyze } from '../../src/ts/lib/cty2json';
-import type { cty2JSONDataFormat } from '../../declaration/cty2json'
 
 import { checkHistoryData, checkMiscData, checkTileData } from '../common/cityDataCommonTest';
 import {readFileSync} from 'fs';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { describe, it } from 'vitest';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const fixturesDir = `${__dirname}/../fixtures`;
 
 describe(
   'Cty2JSON library testing',
   () => {
     const file = readFileSync(`${fixturesDir}/cty2jsonTest.cty`);
-    const cityData = analyze(new Uint8Array(file).buffer) as cty2JSONDataFormat;
+    const cityData = analyze(new Uint8Array(file).buffer);
 
     it(
       'Check History Data Order',

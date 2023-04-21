@@ -2,9 +2,13 @@
 import { spawnSync } from 'child_process';
 import { readFileSync, unlinkSync } from 'fs';
 import { fileSync, FileResult } from 'tmp';
-import { cty2JSONDataFormat } from '../../declaration/cty2json';
+import type{ cty2JSONDataFormat } from '../../declaration/cty2json';
 import { checkMiscData, checkTileData, checkHistoryData } from '../common/cityDataCommonTest';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const fixturesDir = `${__dirname}/../fixtures`;
 
 describe(
@@ -16,7 +20,7 @@ describe(
         const {stderr} = spawnSync(
           'node',
           [
-            './bin/cli.cjs',
+            './bin/cli.js',
             `${fixturesDir}/c.cty`,
           ]
         );
@@ -29,7 +33,7 @@ describe(
         const {stderr} = spawnSync(
           'node',
           [
-            './bin/cli.cjs',
+            './bin/cli.js',
             `${fixturesDir}/wrong.cty`,
           ]
         );
@@ -42,7 +46,7 @@ describe(
         const {stderr} = spawnSync(
           'node',
           [
-            './bin/cli.cjs',
+            './bin/cli.js',
             `${fixturesDir}/cty2jsonTest.cty`,
             `-o`,
             `foobar/hogehoge.json`
@@ -58,7 +62,6 @@ describe(
   'cli Cty2JSON output test',
   () => {
     let tmpFile: FileResult;
-    let fileLength = 0;
     beforeEach(
       () => {
         tmpFile = fileSync({
@@ -73,7 +76,7 @@ describe(
         spawnSync(
           'node',
           [
-            './bin/cli.cjs',
+            './bin/cli.js',
             `${fixturesDir}/cty2jsonTest.cty`,
             '-o',
             `${tmpFile.name}`,
@@ -81,7 +84,6 @@ describe(
         );
         const json = readFileSync(`${tmpFile.name}`, 'utf8');
         const cityData = JSON.parse(json) as cty2JSONDataFormat;
-        fileLength = json.length + 3000;
         checkHistoryData(cityData);
         checkMiscData(cityData);
         checkTileData(cityData);

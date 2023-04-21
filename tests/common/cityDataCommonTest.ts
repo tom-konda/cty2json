@@ -1,4 +1,5 @@
 import type { cty2JSONDataFormat } from '../../declaration/cty2json'
+import { expect } from 'vitest';
 
 const checkTileValue = [
   29, 623, 25, 31, 0,

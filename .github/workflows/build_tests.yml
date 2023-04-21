@@ -13,7 +13,7 @@ jobs:
         node-version: '18'
     - run: yarn install
     - run: yarn build
-    - run: npm link && cty2json -V
+    - run: npm link && cty2json -v
   mac_test_job:
     runs-on: macos-latest
     name: macOS test
@@ -24,7 +24,7 @@ jobs:
         node-version: '18'
     - run: yarn install
     - run: yarn build
-    - run: npm link && cty2json -V
+    - run: npm link && cty2json -v
   win_test_job:
     runs-on: windows-latest
     name: Windows test
@@ -35,4 +35,4 @@ jobs:
         node-version: '18'
     - run: yarn install
     - run: yarn build
-    - run: npm link && cty2json -V
+    - run: npm link && cty2json -v

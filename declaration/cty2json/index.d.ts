@@ -5,7 +5,7 @@ export type cty2JSONDataFormat = {
   tileData: tileData[][];
 }
 
-type tileData = {
+export type tileData = {
   building: number;
   zoneCenter: boolean;
   animated: boolean;
@@ -14,7 +14,7 @@ type tileData = {
   conductive: boolean;
 }
 
-type historyData = {
+export type historyData = {
   residential: historyGraphData;
   commercial: historyGraphData;
   industrial: historyGraphData;
@@ -23,12 +23,12 @@ type historyData = {
   landValue: historyGraphData;
 }
 
-type historyGraphData = {
+export type historyGraphData = {
   '10years': number[];
   '120years': number[];
 }
 
-type miscData = {
+export type miscData = {
   RPopulation: number;
   CPopulation: number;
   IPopulation: number;

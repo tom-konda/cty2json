@@ -1,6 +1,6 @@
 'use strict';
 
-import { cty2JSONDataFormat, historyData, historyGraphData, miscData } from "../../../declaration/cty2json/index";
+import type { cty2JSONDataFormat, historyData, historyGraphData, miscData } from "../../../declaration/cty2json/index";
 
 export const analyze = (data: ArrayBuffer): cty2JSONDataFormat => {
   const SHORT_BYTE_LENGTH = 2,

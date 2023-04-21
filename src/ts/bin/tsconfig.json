@@ -1,24 +1,18 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "ESNext",
+    "target": "es2022",
+    "module": "esnext",
+    "esModuleInterop": true,
+    "moduleResolution": "bundler",
+    "verbatimModuleSyntax": true,
     "lib": [
-      "ES2022",
-    ],
-    "typeRoots": [
-      "node_modules/@types",
-      "../../../declaration"
+      "es2022",
     ],
     "types": [
       "node",
-      "cty2json",
       "commander"
     ],
-    "outDir": "../../../temp/bin",
-    "rootDir": "../",
-    "esModuleInterop": true,
-    "moduleResolution": "Node",
     "sourceMap": false
   },
 }

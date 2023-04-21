@@ -25,20 +25,21 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "prebuild": "npm run clean",
-    "build": "npm-run-all lint test --parallel ts:build-* --serial rollup:*-banner test:cli",
+    "build": "npm-run-all lint test --parallel ts:build-* test:cli",
     "postbuild": "npm run doc-gen",
     "clean": "node -e \"require('shelljs').rm('-R', ['./bin','./lib', './doc', './temp']);\"",
-    "ts:build-bin": "tsc -p ./src/ts/bin",
-    "ts:build-lib": "tsc -p ./src/ts/lib",
-    "rollup:lib-banner": "rollup -c ./rollup-configs/rollup.config.js",
-    "rollup:cli-banner": "rollup -c ./rollup-configs/rollup.cli-banner.config.js",
+    "ts:build-bin": "vite build -c ./vite-configs/vite.cli-config.js ./src/ts/bin",
+    "ts:build-lib": "vite build -c ./vite-configs/vite.config.js ./src/ts/lib",
     "doc-gen": "typedoc --excludeExternals",
-    "lint": "eslint src/**/*.ts",
-    "test": "jest --config ./jest.config.mjs ./tests/unit",
-    "test:cli": "jest --config ./jest.config.mjs ./tests/e2e"
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:eslint": "eslint src/**/*.ts",
+    "lint:tsc-lib": "tsc --noEmit -p ./src/ts/lib",
+    "lint:tsc-bin": "tsc --noEmit -p ./src/ts/bin",
+    "test": "vitest run --dir ./tests/unit",
+    "test:cli": "vitest run --dir ./tests/e2e"
   },
   "engines": {
-    "node": ">=16.13.0"
+    "node": ">=18.12.0"
   },
   "devDependencies": {
     "@types/node": "^18",

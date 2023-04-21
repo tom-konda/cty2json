@@ -14,7 +14,7 @@
     "url": "https://github.com/tom-konda/cty2json.git"
   },
   "bin": {
-    "cty2json": "bin/cli.cjs"
+    "cty2json": "bin/cli.js"
   },
   "type": "module",
   "exports": {

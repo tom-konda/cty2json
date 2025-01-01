@@ -6,6 +6,7 @@ import { defineConfig } from 'vite';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const packageInfo = JSON.parse(readFileSync(`${__dirname}/../package.json`).toString());
 const bannerText = `
+#!/usr/bin/env node
 /**
  * Cty2JSON ver ${packageInfo.version}
  * Copyright (C) 2015-${new Date().getUTCFullYear()} Tom Konda

@@ -1,11 +1,11 @@
 'use strict';
-import { spawnSync } from 'child_process';
-import { readFileSync, unlinkSync } from 'fs';
+import { spawnSync } from 'node:child_process';
+import { readFileSync, unlinkSync } from 'node:fs';
 import { fileSync, FileResult } from 'tmp';
 import type{ cty2JSONDataFormat } from '../../declaration/cty2json';
 import { checkMiscData, checkTileData, checkHistoryData } from '../common/cityDataCommonTest';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

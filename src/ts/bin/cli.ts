@@ -1,10 +1,10 @@
 import { program } from 'commander';
-import {constants as fsConstants, readFileSync} from 'fs';
-import { access, readFile, writeFile } from 'fs/promises';
+import {constants as fsConstants, readFileSync} from 'node:fs';
+import { access, readFile, writeFile } from 'node:fs/promises';
 import {outputJSONText} from '../lib/cty2json';
 
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 

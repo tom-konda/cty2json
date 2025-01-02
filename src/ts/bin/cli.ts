@@ -17,7 +17,7 @@ const fileAccessCheck = (inputFile: string) => {
 const fileFormatCheck = (inputFile: Buffer) => {
   const uint8arr = new Uint8Array(inputFile);
   try {
-    const ctyData = outputJSONText(uint8arr.buffer as ArrayBuffer);
+    const ctyData = outputJSONText(uint8arr.buffer);
     return Promise.resolve(ctyData);
   }
   catch (error) {

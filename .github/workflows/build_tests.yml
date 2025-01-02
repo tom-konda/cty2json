@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Linux test
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
         node-version: '20'
     - run: yarn install
@@ -18,8 +18,8 @@ jobs:
     runs-on: macos-latest
     name: macOS test
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
         node-version: '20'
     - run: yarn install
@@ -29,8 +29,8 @@ jobs:
     runs-on: windows-latest
     name: Windows test
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
         node-version: '20'
     - run: yarn install

@@ -11,8 +11,8 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: '20'
-    - run: yarn install
-    - run: yarn build
+    - run: npm run install
+    - run: npm run build
     - run: npm link && cty2json -v
   mac_test_job:
     runs-on: macos-latest
@@ -22,8 +22,8 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: '20'
-    - run: yarn install
-    - run: yarn build
+    - run: npm run install
+    - run: npm run build
     - run: npm link && cty2json -v
   win_test_job:
     runs-on: windows-latest
@@ -33,6 +33,6 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: '20'
-    - run: yarn install
-    - run: yarn build
+    - run: npm run install
+    - run: npm run build
     - run: npm link && cty2json -v
